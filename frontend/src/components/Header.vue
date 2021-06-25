@@ -10,8 +10,8 @@
           <ul>
             <li><a href="http://localhost:8080/">Home</a></li>
             <li><a href="#">About</a></li>
-            <li><a href="#">Sign up</a></li>
-            <li><a href="#">Log in</a></li>
+            <li><a href="http://localhost:8080/signup">Sign up</a></li>
+            <li><a href="http://localhost:8080/login">Log in</a></li>
             <div class="search-container">
                 <form action="/action_page.php">
                   <input type="text" placeholder="Search.." name="search">

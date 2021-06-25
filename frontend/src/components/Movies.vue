@@ -1,5 +1,4 @@
 <template>
-    
     <div class="tv-series-area tv-series-bg" style="background:rgb(99, 98, 98)" >
         <div class="container">
             <div :key="movie.id" v-for="movie in movies" class="row justify-content-center">  
@@ -7,8 +6,6 @@
             </div>
         </div>
     </div>
-
-
 </template>
 
 <script>

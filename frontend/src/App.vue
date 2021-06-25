@@ -1,7 +1,6 @@
 <template>
   
   <Header></Header>
-  
   <router-view></router-view>
 
   <Movies :movies="movies"></Movies>

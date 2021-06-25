@@ -1,8 +1,10 @@
+/* eslint-disable */
 import { createWebHistory, createRouter} from 'vue-router'
 import Movies from "../components/Movies"
 import MovieDetails from "../components/MovieDetails"
 import Uploadmovie from "../components/Uploadmovie"
 import Login from "../components/Login"
+import Signup from "../components/Signup" 
 
 const routes = [
     {
@@ -24,6 +26,11 @@ const routes = [
         path: "/login",
         name: "login",
         component: Login
+    },
+    {
+        path: "/signup",
+        name: "signup",
+        component: Signup
     }
 ]
 
