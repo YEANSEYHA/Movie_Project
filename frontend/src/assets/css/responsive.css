@@ -1,0 +1,63 @@
+
+/* Extra large devices (large desktops, 1800px and up) */
+@media (max-width: 1500px) {
+.custom-container {
+    max-width: 1330px;
+}
+
+}
+
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (max-width: 1199.98px) {
+.custom-container {
+    max-width: 960px;
+}
+
+.services-bg-two .services-img-wrap .download-btn {
+    display: none;
+}
+.movie-item-row .custom-col- {
+    -ms-flex: 0 0 33.333%;
+    flex: 0 0 33.333%;
+    max-width: 33.333%;
+}
+.movie-item-row .movie-poster img {
+    width: 100%;
+}
+.movie-item-row {
+    justify-content: center;
+}
+
+
+}
+
+
+
+/* Large devices (desktops, 992px and up) */
+@media (max-width: 991.98px) {
+.custom-container {
+    max-width: 720px;
+
+
+}
+}
+
+
+
+
+
+
+
+/* Small devices (landscape phones, 576px and up) */
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+.custom-container {
+    max-width: 540px;
+}
+
+
+
+
+}
+
+

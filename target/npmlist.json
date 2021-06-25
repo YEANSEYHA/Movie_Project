@@ -1,0 +1,1 @@
+{"version":"1.0.0","name":"movie-project","dependencies":{"bcryptjs":{"version":"2.4.3"},"dotenv":{"version":"10.0.0"},"express":{"version":"4.17.1"},"mongoose":{"version":"5.12.14"}}}
