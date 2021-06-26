@@ -1,31 +1,33 @@
 <template>
   
-  <Header></Header>
   <router-view></router-view>
 
-  <Movies :movies="movies"></Movies>
 
 </template>
 
 <script>
 
 
-import Header from './components/Header.vue'
-import Movies from './components/Movies.vue'
-
+// import Header from './components/Header.vue'
 
 
 export default {
   name: 'App',
   components: {
-    Header,
-    Movies
+    // Header,
 
   },
   data(){
     return{
-      movies: []
+      movies: [],
+      datas:"",
     }
+  },
+  watch:{
+      name(){
+          console(document.cookie.split("=")[3])
+          this.datas=document.cookie.split("=")[3]
+      }
   },
   created(){
     this.movies = [

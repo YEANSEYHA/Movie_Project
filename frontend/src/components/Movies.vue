@@ -13,12 +13,35 @@ import Movie from './Movie.vue';
 
 export default {
     name: 'Movies',
-    props:{
-        movies: Array
-    },
+  
     components: {
         Movie,
+    },
+data(){
+    return{
+      movies: []
     }
+  },
+  created(){
+    this.movies = [
+      {
+      id: 1,
+      title: 'Aasdasdr'
+      },
+      {
+        id: 2,
+        title: "Endgame",
+      },
+       {
+      id: 1,
+      title: 'Avenger'
+      },
+      {
+        id: 2,
+        title: "Endgame",
+      }
+    ]
+  }
 }
 </script>
 

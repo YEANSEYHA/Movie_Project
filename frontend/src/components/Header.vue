@@ -1,19 +1,26 @@
 <template>
     <nav class="navbar">
         <div class="brand-title">Palace Cinema</div>
-        <a href="http://localhost:8080/" class="toggle-button">
+        <router-link to="/" class="toggle-button">
           <span class="bar"></span>
           <span class="bar"></span>
           <span class="bar"></span>
-        </a>
-        <div class="navbar-links">
+        </router-link>
+        <div class="navbar-links" >
           <ul>
-            <li><a href="http://localhost:8080/">Home</a></li>
+            <li><router-link to="/">Home</router-link></li>
             <li><a href="#">About</a></li>
-            <li><a href="http://localhost:8080/signup">Sign up</a></li>
-            <li><a href="http://localhost:8080/login">Log in</a></li>
+            <li><router-link v-if="name==''||name==undefined" to="/signup" >Sign up</router-link></li>
+            <li v-if="name==''||name==undefined" ><router-link to="/login">Log in</router-link></li>
+            <li v-else><router-link to="/login" >{{name}}</router-link></li>
+            <li >
+                <slot v-if="name==''||name==undefined"></slot>
+
+                <router-link v-else @click="logout" to="/">logout</router-link>
+                </li>
+
             <div class="search-container">
-                <form action="/action_page.php">
+                <form action="/action_page.php" >
                   <input type="text" placeholder="Search.." name="search">
                   <button type="submit"><i class="fa fa-search"></i></button>
                 </form>
@@ -21,11 +28,48 @@
           </ul>
         </div>
     </nav>
+    <router-view></router-view>
 </template>
 
 <script>
+import router from '../router';
 export default{
-    name: 'Header'
+    
+    name: 'Header',
+    props:['datas'],
+    data(){
+        return{
+            route:this.$route.name,
+            name:"",
+        }
+    },
+    computed:{
+        // name(){
+        //    return document.cookie.split("=")[3];
+        // }
+    },
+    async mounted(){
+        var data = document.cookie.split("=");
+        console.log(data[3])
+        this.name=data[3]
+    },
+    methods:{
+        deleteCookie(name) {
+            document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    },
+        logout(){
+           this.deleteCookie("name");
+           this.deleteCookie("isAdmin");
+           this.deleteCookie("token");
+           this.name=""
+            router.push({name:"index"});
+        }
+    },
+   watch(){
+           console.log(this.route);
+        this.route = this.$route.name;
+   }
+    
 }
 
 </script>

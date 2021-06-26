@@ -1,17 +1,17 @@
 <template>
   <h2>Login Form</h2>
 
-<form action="#" method="post">
+<form action="" method="post" @submit.prevent="loginAccount">
   <div class="imgcontainer">
     <img src="img_avatar2.png" alt="Avatar" class="avatar">
   </div>
 
   <div class="container">
-    <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
+    <label for="uname"><b>Email</b></label>
+    <input type="email" placeholder="Enter Username" name="uname" v-model="email" required>
 
     <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <input type="password" placeholder="Enter Password" v-model="password" name="psw" required>
         
     <button type="submit">Login</button>
     
@@ -25,8 +25,40 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
-    name: 'Login'
+    name: 'Login',
+    data(){
+      return{
+        email:"",
+        password:"",
+      }
+    },
+    methods:{
+      async loginAccount(){
+        var response =await axios.post("http://localhost:3000/api/users/login",{
+          email:this.email,
+          password:this.password,
+        })
+        if(response.data.token){
+          document.cookie="token="+response.data.token;
+          if(response.data.isAdmin){
+            document.cookie="isAdmin="+response.data.isAdmin;
+            document.cookie="name="+response.data.name;
+            // router.push({name:"adminpage"});
+            window.location.pathname="/adminpage"
+          }else if(!response.data.isAdmin){
+            document.cookie="isAdmin="+response.data.isAdmin;
+            document.cookie="name="+response.data.name;
+            // router.push({path:"/"});
+            window.location.pathname="/";
+
+          }
+        }else{
+          alert("Invalid Account");
+        }
+      }
+    }
 }
 </script>
 
