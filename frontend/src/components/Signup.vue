@@ -1,12 +1,12 @@
 <template>
-<form action="/login" style="border:0px solid #ccc">
+<form @submit.prevent="registerAccount" style="border:0px solid #ccc">
   <div class="container">
       <h1>Sign Up</h1>
       
       <p>Please fill in this form to create an account.</p>
-
-      <input type="text" placeholder="Email" name="email" required>     
-      <input type="password" placeholder="Password" name="psw" required> 
+      <input type="text" placeholder="Name" name="name" v-model="name" required> 
+      <input type="text" placeholder="Email" name="email" v-model="email"  required>     
+      <input type="password" placeholder="Password" name="psw" v-model="password" required> 
       <input type="password" placeholder="Comfirm Password" name="psw-repeat" required>
    
       <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
@@ -33,13 +33,17 @@ export default {
       }
     },
     methods:{
-      async sendPost(){
+      async registerAccount(){
         const postData ={name: this.name, email:this.email, password:this.password};
         await axios
-          .post("http://localhost:3000/api/users/", postData)
+          .post("http://localhost:3000/api/users/signup", postData)
           .then(res =>{
             console.log(res.body);
-          })
+            window.location.pathname="/login";
+          }).catch(error => {
+            console.log('Show error notification!',error)
+            }
+          )
       }
 
     }

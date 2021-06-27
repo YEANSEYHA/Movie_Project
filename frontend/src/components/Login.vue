@@ -1,5 +1,5 @@
 <template>
-  <form action="" method="post" @submit.prevent="loginAccount">
+  <form class="back_img" @submit.prevent="loginAccount">
       <div class="container">
           <h1>Login</h1>
           <p>Pleae Login in to your account to watch your favorite movies</p>
@@ -65,20 +65,21 @@ body {
   h1 {
     font-family: 'Poppins', sans-serif;
   }
-.login-form {
-  padding: 16px;
-  width: 500px;
-}
 
-.form-box {
-
-    background-color: #f1f1f1;
-    border:1px solid grey;
-}
 form {
   border:0px solid #ccc;
-  }
+}
 
+.back_img {
+  padding-top: 100px;
+  background-image: url('~@/assets/movies_background.jpg');
+  height: 90vh;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 input[type=email], input[type=password] {
   width: 100%;
@@ -142,7 +143,7 @@ button:hover {
   padding: 16px;
   width: 500px;
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-  
+ 
 }
 
 

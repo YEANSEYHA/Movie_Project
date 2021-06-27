@@ -1,8 +1,10 @@
 <template>
     <div class="tv-series-area tv-series-bg" style="background:rgb(99, 98, 98)" >
         <div class="container">
-            <div :key="movie.id" v-for="movie in movies" class="row justify-content-center">  
-                <Movie :movie="movie"></Movie>
+            <div class="row justify-content-center">
+                <div class="col-xl-3 col-lg-4 col-sm-6" :key="movie.id" v-for="movie in movies">
+                    <Movie :movie="movie"></Movie>
+                </div>
             </div>
         </div>
     </div>

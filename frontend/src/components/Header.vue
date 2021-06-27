@@ -1,38 +1,46 @@
 <template>
-    <nav class="navbar">
-        <div class="brand-title">Palace Cinema</div>
-        <router-link to="/" class="toggle-button">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </router-link>
-        <div class="navbar-links" >
-          <ul>
-            <li><router-link to="/">Home</router-link></li>
-            <li><a href="#">About</a></li>
-            <li><router-link v-if="name==''||name==undefined" to="/signup" >Sign up</router-link></li>
-            <li v-if="name==''||name==undefined" ><router-link to="/login">Log in</router-link></li>
-            <li v-else><router-link to="/login" >{{name}}</router-link></li>
-            <li >
-                <slot v-if="name==''||name==undefined"></slot>
+    <div class="header-box">
+        <nav class="navbar">
+            <div class="brand-title">Palace Cinema</div>
+            <router-link to="/" class="toggle-button">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            </router-link>
+            <div class="navbar-links" >
+            <ul>
+                <li><router-link to="/">Home</router-link></li>
+                <li><a href="#">About</a></li>
+                <li><router-link v-if="name==''||name==undefined" to="/signup" >Sign up</router-link></li>
+                <li v-if="name==''||name==undefined" ><router-link to="/login">Log in</router-link></li>
+                <li v-else-if="isAdmin==true"><router-link to="/adminpage" >{{name}}</router-link></li>
+                <li v-else><router-link to="/" >{{name}}</router-link></li>
+                <li >
+                    <slot v-if="name==''||name==undefined"></slot>
 
-                <router-link v-else @click="logout" to="/">logout</router-link>
-                </li>
+                    <router-link v-else @click="logout" to="/">logout</router-link>
+                    </li>
 
-            <div class="search-container">
-                <form action="/action_page.php" >
-                  <input type="text" placeholder="Search.." name="search">
-                  <button type="submit"><i class="fa fa-search"></i></button>
-                </form>
+                <div class="search-container">
+                    <form action="/action_page.php" >
+                    <input type="text" placeholder="Search.." name="search">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+            </ul>
             </div>
-          </ul>
-        </div>
-    </nav>
-    <router-view></router-view>
+        </nav>
+        <router-view></router-view>
+    </div>
 </template>
 
 <script>
 import router from '../router';
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+}
 export default{
     
     name: 'Header',
@@ -41,6 +49,7 @@ export default{
         return{
             route:this.$route.name,
             name:"",
+            isAdmin:false,
         }
     },
     computed:{
@@ -49,9 +58,8 @@ export default{
         // }
     },
     async mounted(){
-        var data = document.cookie.split("=");
-        console.log(data[3])
-        this.name=data[3]
+        this.name=getCookie('name')
+        this.isAdmin=getCookie('isAdmin')
     },
     methods:{
         deleteCookie(name) {

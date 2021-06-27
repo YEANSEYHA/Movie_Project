@@ -11,9 +11,9 @@
                         <td data-label="Username">{{data.name}}</td>
                         <td data-label="Email">{{data.email}}</td>
                         <td data-label="Action">
-                            <i class="fas fa-edit m-2"></i>
+                            <button ><i class="fas fa-edit m-2"></i></button>
                             <!-- &nbsp;&nbsp;&nbsp; -->
-                            <i class="fas fa-trash m-2"></i>
+                            <button @click="deleteUser(data._id)"><i class="fas fa-trash m-2"></i></button>
                         </td>
                     </tr>
                 </tbody>
@@ -24,26 +24,42 @@
 
 <script>
 import axios from 'axios';
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+}
 export default {
     name: 'Users',
+    methods: {
+        async deleteUser(id) {
+            await axios.delete("http://localhost:3000/api/users/"+ id,{
+                headers:{
+                    authorization: this.token
+                }
+            }).then(()=>{
+                location.reload();
+          })
+        },
+    },
     data(){
         return{
             datas:[],
             user:'',
+            token:'',
         }
     },
     async mounted(){
-        var data2 = document.cookie.split("=");
-        console.log(data2[1].split(";")[0])
-       var response= await axios.get("http://localhost:3000/api/users/",{
+        this.token = "Bearer "+getCookie('token');
+       var response= await axios.get("http://localhost:3000/api/users/signup",{
            headers:{
-               authorization:"Bearer "+data2[1].split(";")[0]
+               authorization: this.token
            }
        }
        )
 
        this.datas = response.data
-    }
+    },
 }
 </script>
 
