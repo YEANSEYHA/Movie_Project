@@ -71,7 +71,25 @@
 
 <script>
 export default {
-    name: 'Listmovie'
+    name: 'Listmovie',
+    data(){
+        return{
+            datas:[],
+            user:'',
+        }
+    },
+    async mounted(){
+        var data2 = document.cookie.split("=");
+        console.log(data2[1].split(";")[0])
+       var response= await axios.get("http://localhost:3000/api/movies/",{
+           headers:{
+               authorization:"Bearer "+data2[1].split(";")[0]
+           }
+       }
+       )
+
+       this.datas = response.data
+    }
 }
 </script>
 

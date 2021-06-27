@@ -48,6 +48,6 @@ export default {
 </script>
 
 <style>
-@import '../assets/css/admin_style.css'
+@import '../assets/css/admin_style.css';
 
 </style>

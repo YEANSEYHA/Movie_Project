@@ -2,19 +2,19 @@
 
         <div class="flexbox-item flexbox-item-2">
             <form @click.prevent="sendPost()">
-                <label for="movietitle">Title:</label>
+                <label for="title">Title:</label>
                 <br>
-                <input type="text" id="movietitle" name="movietitle">
+                <input type="text"  name="title" v-model="title">
                 <br>
 
                 <label for="Genre">Genre:</label>
                 <br>
-                <input type="text" id="Genre" name="Genre">
+                <input type="text"  name="genre" v-model="genre">
                 <br>
                 <br>
                 
 
-                <input type="submit">
+                <button class="signupbtn"   >Sign Up</button>
 
             </form>
 
@@ -22,8 +22,27 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-    name: 'upload'
+    name: 'upload',
+        data(){
+            return{
+            title: '',
+            genre: ''
+        }
+    },
+
+    methods:{
+      async sendPost(){
+        const postData ={title:this.title, genre:this.genre};
+        await axios
+          .post("http://localhost:3000/api/movies/", postData)
+          .then(res =>{
+            console.log(res.body);
+          })
+      }
+
+    }
 }
 </script>
 

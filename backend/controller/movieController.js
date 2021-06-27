@@ -2,14 +2,15 @@ import Movie from '../models/movieModel.js'
 import asyncHandler from 'express-async-handler'
 
 
-// Fetch    all movies
+
+// @desc    Fetch all movies
 // @route   GET /api/movies
 // @access  Public
-const getMovies = asyncHandler(async(req,res)=>{
+const getMovies = asyncHandler(async (req, res) => {
     const movies = await Movie.find({})
-
-    res.json(movies)
-})
+  
+    res.json({ movies })
+  })
 
 // Fetch    Fetch single movie
 // @route   GET /api/movies/:id
@@ -24,8 +25,8 @@ const getMovieById = asyncHandler(async(req,res)=>{
             throw new Error('Movie not found')
         }
 })
-// @desc    Create a product
-// @route   POST /api/products
+// @desc    Create a movie
+// @route   POST /api/movies
 // @access  Private/Admin
 const createMovie = asyncHandler(async (req, res) => {
     const { title, genre} = req.body
