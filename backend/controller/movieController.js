@@ -28,13 +28,15 @@ const getMovieById = asyncHandler(async(req,res)=>{
 // @route   POST /api/products
 // @access  Private/Admin
 const createMovie = asyncHandler(async (req, res) => {
-    const movie = new Movie({
-    user: req.user._id,
-     title: movie.title,
-     genre: movie.genre
-    })
+    const { title, genre} = req.body
+    
+    const createdMovie = await Movie.create({
+        user: req.user._id,
+        title,
+        genre
+      })
   
-    const createdMovie = await movie.save()
+    
     res.status(201).json(createdMovie)
   })
 
