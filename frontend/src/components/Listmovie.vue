@@ -70,6 +70,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
     name: 'Listmovie',
     data(){

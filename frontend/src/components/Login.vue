@@ -1,27 +1,19 @@
 <template>
-  <h2>Login Form</h2>
-
-<form action="" method="post" @submit.prevent="loginAccount">
-  <div class="imgcontainer">
-    <img src="img_avatar2.png" alt="Avatar" class="avatar">
-  </div>
-
-  <div class="container">
-    <label for="uname"><b>Email</b></label>
-    <input type="email" placeholder="Enter Username" name="uname" v-model="email" required>
-
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" v-model="password" name="psw" required>
-        
-    <button type="submit">Login</button>
-    
-  </div>
-
-  <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn">Cancel</button>
-    <span class="psw">Forgot <a href="#">password?</a></span>
-  </div>
-</form>
+  <form action="" method="post" @submit.prevent="loginAccount">
+      <div class="container">
+          <h1>Login</h1>
+          <p>Pleae Login in to your account to watch your favorite movies</p>
+          
+            <input type="email" placeholder="Email" name="uname" v-model="email" required>
+            <input type="password" placeholder="Password" v-model="password" name="psw" required>
+            <div class="btn-sub">    
+              <button type="submit" class="login-btn">Login</button>
+               <button type="button" class="cancelbtn">Cancel</button>
+              
+            </div>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+      </div>
+    </form>
 </template>
 
 <script>
@@ -63,17 +55,49 @@ export default {
 </script>
 
 <style scoped>
-body {font-family: Arial, Helvetica, sans-serif;}
-form {border: 3px solid #f1f1f1;}
+* {
+  box-sizing: border-box;
+  
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  }
+  h1 {
+    font-family: 'Poppins', sans-serif;
+  }
+.login-form {
+  padding: 16px;
+  width: 500px;
+}
 
-input[type=text], input[type=password] {
+.form-box {
+
+    background-color: #f1f1f1;
+    border:1px solid grey;
+}
+form {
+  border:0px solid #ccc;
+  }
+
+
+input[type=email], input[type=password] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid #ccc;
+  border: none;
   box-sizing: border-box;
+  border-radius: 15px;
+  background: #f1f1f1;
 }
+input[type=email]:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+input[type=password]:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
 
 button {
   background-color: #04AA6D;
@@ -87,39 +111,44 @@ button {
 
 button:hover {
   opacity: 0.8;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
+
+.login-btn {
+  
+  
+  padding: 10px 18px;
+  color: #f1f1f1;
+  background-color: blue;
+  border-radius: 25px;
+  float: left;
+  width: 50%;
+
+}
+
 
 .cancelbtn {
-  width: auto;
+  
   padding: 10px 18px;
   background-color: #f44336;
+  border-radius: 25px;
+  float: left;
+  width: 50%;
 }
 
-.imgcontainer {
-  text-align: center;
-  margin: 24px 0 12px 0;
-}
 
-img.avatar {
-  width: 40%;
-  border-radius: 50%;
-}
 
 .container {
   padding: 16px;
+  width: 500px;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+  
 }
 
-span.psw {
-  float: right;
-  padding-top: 16px;
-}
+
 
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
-  span.psw {
-     display: block;
-     float: none;
-  }
   .cancelbtn {
      width: 100%;
   }

@@ -1,24 +1,20 @@
 <template>
-  <form @click.prevent="sendPost()" >
+<form action="/login" style="border:0px solid #ccc">
   <div class="container">
-    <h1>Sign Up</h1>
-    <p>Please fill in this form to create an account.</p>
-    <hr>
+      <h1>Sign Up</h1>
+      
+      <p>Please fill in this form to create an account.</p>
 
-    <label for="name"><b>Name</b></label>
-    <input type="text" placeholder="Enter Name" name="name" v-model="name" required>
+      <input type="text" placeholder="Email" name="email" required>     
+      <input type="password" placeholder="Password" name="psw" required> 
+      <input type="password" placeholder="Comfirm Password" name="psw-repeat" required>
+   
+      <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
-    <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email"  name="email" v-model="email" required>
-
-    <label for="password"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" v-model="password" required>
-
-
-    
-    
-    
-      <button class="signupbtn"   >Sign Up</button>
+    <div class="clearfix">
+      <button type="button" class="cancelbtn">Cancel</button>
+      <button type="submit" class="signupbtn">Sign Up</button>
+    </div>
   </div>
 </form>
 </template>
@@ -67,11 +63,22 @@ export default {
 
 
 <style scoped>
-body {font-family: Arial, Helvetica, sans-serif;}
-* {box-sizing: border-box}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  
+  }
+* {
+  box-sizing: border-box;
+ 
+  }
+  h1{
+    font-family: 'Poppins', sans-serif;
+  }
 
 /* Full-width input fields */
 input[type=text], input[type=password] {
+  border-radius: 10px;
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
@@ -80,15 +87,13 @@ input[type=text], input[type=password] {
   background: #f1f1f1;
 }
 
-input[type=text]:focus, input[type=password]:focus {
+input[type=text]:hover, input[type=password]:hover {
   background-color: #ddd;
   outline: none;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
-hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
-}
+
 
 /* Set a style for all buttons */
 button {
@@ -104,16 +109,19 @@ button {
 
 button:hover {
   opacity:1;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 /* Extra styles for the cancel button */
 .cancelbtn {
+  
   padding: 14px 20px;
   background-color: #f44336;
 }
 
 /* Float cancel and signup buttons and add an equal width */
 .cancelbtn, .signupbtn {
+  border-radius: 25px;
   float: left;
   width: 50%;
 }
@@ -121,6 +129,8 @@ button:hover {
 /* Add padding to container elements */
 .container {
   padding: 16px;
+  width: 500px;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 /* Clear floats */
