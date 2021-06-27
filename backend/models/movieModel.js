@@ -1,23 +1,40 @@
 import mongoose from 'mongoose'
 
-const movieSchema = mongoose.Schema(
-{
+const reviewSchema = mongoose.Schema(
+  {
     user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: 'User',
     },
-    title:{
-        type: String,
-        required: true
-    },
-    genre:{
-        type: String,
-        required: true
-    },
-    
-}
+  },
+  {
+    timestamps: true,
+  }
 )
 
-const Movie = mongoose.model('movie', movieSchema)
+const movieSchema = mongoose.Schema(
+  {
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: 'User',
+    },
+    title: {
+      type: String,
+      required: true,
+    },
+    genre: {
+      type: String,
+      required: true,
+    },
+   
+  },
+  {
+    timestamps: true,
+  }
+)
+
+const Movie = mongoose.model('Movie', movieSchema)
+
 export default Movie

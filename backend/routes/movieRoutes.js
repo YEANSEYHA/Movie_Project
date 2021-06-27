@@ -1,18 +1,15 @@
 import express from 'express'
 const router = express.Router()
-import {getMovies,getMovieById} from '../controller/movieController.js'
+import { protect, admin } from '../middleware/authMiddleware.js'
+import {getMovies, getMovieById, createMovie} from '../controller/movieController.js'
 
 
 
-router.route('/').get(getMovies)
+router.route('/').get(getMovies).post(protect, admin, createMovie)
 
 router.route('/:id').get(getMovieById)
 
 
-
-    
-
-    
 
 
 export default router

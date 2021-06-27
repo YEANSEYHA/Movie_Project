@@ -1,7 +1,7 @@
 <template>
 
         <div class="flexbox-item flexbox-item-2">
-            <form>
+            <form @click.prevent="sendPost()">
                 <label for="movietitle">Title:</label>
                 <br>
                 <input type="text" id="movietitle" name="movietitle">
@@ -12,8 +12,7 @@
                 <input type="text" id="Genre" name="Genre">
                 <br>
                 <br>
-                <label for="poster">Poster:</label>
-                <input type="file" id="poster" name="poster">
+                
 
                 <input type="submit">
 
@@ -28,7 +27,7 @@ export default {
 }
 </script>
 
-<style>
-@import '../assets/css/admin_style.css'
+<style scoped>
+@import '../assets/css/admin_style.css';
 
 </style>

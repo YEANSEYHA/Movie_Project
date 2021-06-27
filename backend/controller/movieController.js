@@ -24,10 +24,25 @@ const getMovieById = asyncHandler(async(req,res)=>{
             throw new Error('Movie not found')
         }
 })
+// @desc    Create a product
+// @route   POST /api/products
+// @access  Private/Admin
+const createMovie = asyncHandler(async (req, res) => {
+    const movie = new Movie({
+    user: req.user._id,
+     title: movie.title,
+     genre: movie.genre
+    })
+  
+    const createdMovie = await movie.save()
+    res.status(201).json(createdMovie)
+  })
+
 
 export {
     getMovies,
-    getMovieById
+    getMovieById,
+    createMovie
 }
 
 
