@@ -11,7 +11,7 @@
                         <td data-label="Username">{{data.name}}</td>
                         <td data-label="Email">{{data.email}}</td>
                         <td data-label="Action">
-                            <button ><i class="fas fa-edit m-2"></i></button>
+                            <button ><router-link to="/adminpage/update"><i class="fas fa-edit m-2"></i></router-link></button>
                             <!-- &nbsp;&nbsp;&nbsp; -->
                             <button @click="deleteUser(data._id)"><i class="fas fa-trash m-2"></i></button>
                         </td>

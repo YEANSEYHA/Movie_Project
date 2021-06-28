@@ -11,7 +11,7 @@
                <button type="button" class="cancelbtn">Cancel</button>
               
             </div>
-            <span class="psw">Forgot <a href="#">password?</a></span>
+            <span class="psw">Forgot password</span>
       </div>
     </form>
 </template>

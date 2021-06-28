@@ -9,6 +9,7 @@ import Upload from "../components/Upload"
 import User from "../components/User"
 import Listmovie from '../components/Listmovie'
 import Header from '../components/Header'
+import UpdateUser from '../components/UpdateUser'
 
 
 const routes = [
@@ -75,6 +76,11 @@ const routes = [
                         name: "uploadmovie",
                         component: Upload
                     },
+                    {
+                        path: "update",
+                        name: "update",
+                        component: UpdateUser
+                    }
                 ]
                 
              

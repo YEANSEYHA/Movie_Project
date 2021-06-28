@@ -5,7 +5,7 @@
       
       <p>Please fill in this form to create an account.</p>
       <input type="text" placeholder="Name" name="name" v-model="name" required> 
-      <input type="text" placeholder="Email" name="email" v-model="email"  required>     
+      <input type="email" placeholder="Email" name="email" v-model="email"  required>     
       <input type="password" placeholder="Password" name="psw" v-model="password" required> 
       <input type="password" placeholder="Comfirm Password" name="psw-repeat" required>
    
@@ -81,7 +81,7 @@ body {
   }
 
 /* Full-width input fields */
-input[type=text], input[type=password] {
+input[type=text], input[type=email], input[type=password] {
   border-radius: 10px;
   width: 100%;
   padding: 15px;
@@ -91,7 +91,17 @@ input[type=text], input[type=password] {
   background: #f1f1f1;
 }
 
-input[type=text]:hover, input[type=password]:hover {
+input[type=text]:hover {
+  background-color: #ddd;
+  outline: none;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+input[type=email]:hover {
+  background-color: #ddd;
+  outline: none;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+input[type=password]:hover {
   background-color: #ddd;
   outline: none;
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
