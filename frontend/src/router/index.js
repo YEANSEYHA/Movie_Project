@@ -56,7 +56,7 @@ const routes = [
                     var admin = data[2].split(";")[0]
                     console.log(from)
                     console.log(data,admin)
-                    if(to.name=="listmovie"||to.name=="user"||to.name=="uploadmovie"&&token&&admin=="true"){ 
+                    if(to.name=="listmovie"||to.name=="user"||to.name=="uploadmovie" || to.name=="update" &&token&&admin=="true"){ 
                         next()
                     }else next({name:"login"})
                 },
