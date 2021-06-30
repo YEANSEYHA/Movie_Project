@@ -1,9 +1,9 @@
 <template>
 
         <div class="flexbox-item" >
-            <form class="container" @submit.prevent="updatedUser">
+            <form class="container" @submit.prevent="updateUser">
                 <p><a style="text-decoration-line: underline"> <b>Noted: </b> </a> Just input what you want to change!</p>
-                <label for="name">{{name}}</label>
+                <label for="name">New Username</label>
                 <br>
                 <input type="text" placeholder="New Username" name="name" v-model="name">
                 <br>
@@ -21,36 +21,46 @@
 
 <script>
 import axios from 'axios'
-function getCookie(name) {
-  const value = `; ${document.cookie}`;
-  const parts = value.split(`; ${name}=`);
-  if (parts.length === 2) return parts.pop().split(';').shift();
-}
 export default {
-    name: 'update',
+    name: 'AdminUpdateuser',
+    prop: ['datas'],
         data(){
             return{
-            id: getCookie('id'),
-            name: getCookie('name'),
-            email:getCookie('email'),
-            token: getCookie('token')
+            // route: this.$route._id,
+            id: '',
+            name: '',
+            email: '',
+            
         }
     },
     methods:{
-      async updatedUser(){
-        const postData ={_id: this.id, name: this.name, email:this.email};
-        const headers = { authorization: this.token }
-        console.log(postData);
+        async getUserById(id) {
+               await axios.get('http://localhost:3000/api/users/',+ id)
+               .then(res=> {
+                   this.id= res._id
+                   this.name = res.name
+                   this.email = res.email
+               })
+        },
+        async updateUser(){
+            const postData ={_id: this.id, name: this.name, email:this.email};
+            const headers = { authorization: this.token }
+            console.log(postData);
 
-        await axios
-          .put("http://localhost:3000/api/users/profile",postData, {headers: headers})
-          .then(res =>{
-              alert("success")
-            console.log(res.body);
-          })
-      }
+            await axios
+            .put("http://localhost:3000/api/users/account"+ postData, {headers: headers})
+            .then(res =>{
+                alert("success")
+                console.log(res.body);
+            })
+        }
 
-    }
+    },
+    async mounted(){
+        console.log(this.$route.params.id)
+        this.getUserById()
+    },
+    
 }
 </script>
 

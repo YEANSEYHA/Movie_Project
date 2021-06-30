@@ -81,7 +81,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
 // @route   PUT /api/users/profile
 // @access  Private
 const updateUserProfile = asyncHandler(async (req, res) => {
-  const user = await User.findById(req.user._id)
+  const user = await User.findById(req.body._id)
 
   if (user) {
     user.name = req.body.name || user.name
@@ -143,7 +143,7 @@ const getUserById = asyncHandler(async (req, res) => {
 })
 
 // @desc    Update user
-// @route   PUT /api/users/:id
+// @route   PUT /api/users/account:id
 // @access  Private/Admin
 const updateUser = asyncHandler(async (req, res) => {
   const user = await User.findById(req.params.id)

@@ -32,16 +32,17 @@ export default {
           email:this.email,
           password:this.password,
         })
-        if(response.data.token){
+        if(response.data.token) {
           document.cookie="token="+response.data.token;
+          document.cookie="isAdmin="+response.data.isAdmin;
+          document.cookie="id="+response.data._id;
+          document.cookie="name="+response.data.name;
+          document.cookie="email="+response.data.email;
+          
           if(response.data.isAdmin){
-            document.cookie="isAdmin="+response.data.isAdmin;
-            document.cookie="name="+response.data.name;
             // router.push({name:"adminpage"});
             window.location.pathname="/adminpage"
           }else if(!response.data.isAdmin){
-            document.cookie="isAdmin="+response.data.isAdmin;
-            document.cookie="name="+response.data.name;
             // router.push({path:"/"});
             window.location.pathname="/";
 
@@ -64,6 +65,7 @@ body {
   }
   h1 {
     font-family: 'Poppins', sans-serif;
+    color: #f1f1f1;
   }
 
 form {
@@ -143,7 +145,7 @@ button:hover {
   padding: 16px;
   width: 500px;
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
- 
+  border-radius: 15px;
 }
 
 

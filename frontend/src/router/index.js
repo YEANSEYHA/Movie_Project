@@ -10,6 +10,8 @@ import User from "../components/User"
 import Listmovie from '../components/Listmovie'
 import Header from '../components/Header'
 import UpdateUser from '../components/UpdateUser'
+import UserProfile from '../components/UserProfile'
+import AdminUpdateUser from '../components/AdminUpdateUser'
 
 
 const routes = [
@@ -21,6 +23,11 @@ const routes = [
             name:"movies"
         },
         children:[
+            {
+                path:"profile",
+                name:"profile",
+                component: UserProfile
+            },
             {
                 path:"movies",
                 name:"movies",
@@ -41,6 +48,11 @@ const routes = [
                 path: "signup",
                 name: "signup",
                 component: Signup
+            },
+            {
+                path: "update-profile",
+                name: "update",
+                component: UpdateUser
             },
             {
                 path: "adminpage",
@@ -77,9 +89,9 @@ const routes = [
                         component: Upload
                     },
                     {
-                        path: "update",
-                        name: "update",
-                        component: UpdateUser
+                        path: "update-account/:id",
+                        name: "AdminUpdateUser",
+                        component: AdminUpdateUser
                     }
                 ]
                 

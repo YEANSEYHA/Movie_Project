@@ -11,7 +11,7 @@
                         <td data-label="Username">{{data.name}}</td>
                         <td data-label="Email">{{data.email}}</td>
                         <td data-label="Action">
-                            <button ><router-link to="/adminpage/update"><i class="fas fa-edit m-2"></i></router-link></button>
+                            <button ><router-link to="/adminpage/update-account/,id:}"><i class="fas fa-edit m-2"></i></router-link></button>
                             <!-- &nbsp;&nbsp;&nbsp; -->
                             <button @click="deleteUser(data._id)"><i class="fas fa-trash m-2"></i></button>
                         </td>
@@ -51,7 +51,7 @@ export default {
     },
     async mounted(){
         this.token = "Bearer "+getCookie('token');
-       var response= await axios.get("http://localhost:3000/api/users/signup",{
+        var response= await axios.get("http://localhost:3000/api/users/signup",{
            headers:{
                authorization: this.token
            }

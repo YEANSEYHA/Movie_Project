@@ -10,17 +10,19 @@
             <div class="navbar-links" >
             <ul>
                 <li><router-link to="/">Home</router-link></li>
-                <li><a href="#">About</a></li>
+                <li><router-link v-if="isAdmin" to="/adminpage"> Dashboard</router-link>
+                    <router-link v-else to="/">About</router-link>
+                    </li>
                 <li><router-link v-if="name==''||name==undefined" to="/signup" >Sign up</router-link></li>
                 <li v-if="name==''||name==undefined" ><router-link to="/login">Log in</router-link></li>
-                <li v-else-if="isAdmin==true"><router-link to="/adminpage" >{{name}}</router-link></li>
-                <li v-else><router-link to="/" >{{name}}</router-link></li>
+                <li v-else><router-link to="/profile" >{{name}}</router-link></li>
+                
                 <li >
                     <slot v-if="name==''||name==undefined"></slot>
 
                     <router-link v-else @click="logout" to="/">logout</router-link>
                     </li>
-
+                    
                 <div class="search-container">
                     <form action="/action_page.php" >
                     <input type="text" placeholder="Search.." name="search">
@@ -49,7 +51,7 @@ export default{
         return{
             route:this.$route.name,
             name:"",
-            isAdmin:false,
+            isAdmin:"",
         }
     },
     computed:{
@@ -69,8 +71,11 @@ export default{
            this.deleteCookie("name");
            this.deleteCookie("isAdmin");
            this.deleteCookie("token");
+           this.deleteCookie("id");
+           this.deleteCookie("email");
            this.name=""
             router.push({name:"index"});
+            console.log(this.deleteCookie("token"))
         }
     },
    watch(){
@@ -157,6 +162,8 @@ body {
 
 .navbar-links li:hover {
     background-color: #555;
+    border-radius: 5px;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 .toggle-button {

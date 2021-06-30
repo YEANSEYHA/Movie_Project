@@ -9,11 +9,12 @@
                     <th>Rating</th>
                     <th>Action</th>
                 </thead>
-                <tbody>
+                
+                <tbody v-for="data in datas" :key="data">
                     <tr>
                         <td data-label="ID">1</td>
-                        <td data-label="Title">SpiderMan</td>
-                        <td data-label="Genre">Fighting</td>
+                        <td data-label="Title">{{datas.title}}</td>
+                        <td data-label="Genre">{{datas.genre}}</td>
                         <td data-label="Rating">4 <i class="fas fa-star"></i></td>
                         <td data-label="Action">
                             <i class="fas fa-edit"></i>
@@ -21,43 +22,6 @@
                             <i class="fas fa-trash"></i>
                         </td>
                     </tr>
-
-                    <tr>
-                        <td data-label="ID">2</td>
-                        <td data-label="Title">Avenger</td>
-                        <td data-label="Genre">Fighting</td>
-                        <td data-label="Rating">4 <i class="fas fa-star"></i></td>
-                        <td data-label="Action">
-                            <i class="fas fa-edit"></i>
-                            &nbsp;&nbsp;&nbsp;
-                            <i class="fas fa-trash"></i>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td data-label="ID">2</td>
-                        <td data-label="Title">Avenger</td>
-                        <td data-label="Genre">Fighting</td>
-                        <td data-label="Rating">4 <i class="fas fa-star"></i></td>
-                        <td data-label="Action">
-                            <i class="fas fa-edit"></i>
-                            &nbsp;&nbsp;&nbsp;
-                            <i class="fas fa-trash"></i>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td data-label="ID">2</td>
-                        <td data-label="Title">Avenger</td>
-                        <td data-label="Genre">Fighting</td>
-                        <td data-label="Rating">4 <i class="fas fa-star"></i></td>
-                        <td data-label="Action">
-                            <i class="fas fa-edit"></i>
-                            &nbsp;&nbsp;&nbsp;
-                            <i class="fas fa-trash"></i>
-                        </td>
-                    </tr>
-                    
                 </tbody>
                 
             </table>
@@ -76,7 +40,7 @@ export default {
     data(){
         return{
             datas:[],
-            user:'',
+            movie:'',
         }
     },
     async mounted(){

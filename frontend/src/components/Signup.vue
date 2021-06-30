@@ -1,5 +1,5 @@
 <template>
-<form @submit.prevent="registerAccount" style="border:0px solid #ccc">
+<form class="back_img" @submit.prevent="registerAccount" style="border:0px solid #ccc">
   <div class="container">
       <h1>Sign Up</h1>
       
@@ -51,21 +51,6 @@ export default {
 
 </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <style scoped>
 
 body {
@@ -78,8 +63,19 @@ body {
   }
   h1{
     font-family: 'Poppins', sans-serif;
+    color: #f1f1f1;
   }
 
+ .back_img {
+  padding-top: 100px;
+  background-image: url('~@/assets/movies_background.jpg');
+  height: 90vh;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 /* Full-width input fields */
 input[type=text], input[type=email], input[type=password] {
   border-radius: 10px;
