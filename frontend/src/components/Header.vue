@@ -51,7 +51,7 @@ export default{
         return{
             route:this.$route.name,
             name:"",
-            isAdmin:"",
+            isAdmin:false,
         }
     },
     computed:{
@@ -74,6 +74,7 @@ export default{
            this.deleteCookie("id");
            this.deleteCookie("email");
            this.name=""
+           this.isAdmin = false;
             router.push({name:"index"});
             console.log(this.deleteCookie("token"))
         }

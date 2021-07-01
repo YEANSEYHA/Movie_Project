@@ -20,6 +20,7 @@
 </template>
 
 <script>
+
 import axios from 'axios'
 export default {
     name: 'AdminUpdateuser',
@@ -35,20 +36,21 @@ export default {
     },
     methods:{
         async getUserById(id) {
-               await axios.get('http://localhost:3000/api/users/',+ id)
+               await axios.get('http://localhost:3000/api/users/'+ id)
                .then(res=> {
-                   this.id= res._id
-                   this.name = res.name
-                   this.email = res.email
+                   this.id = res.data._id
+                   this.name = res.data.name
+                   this.email = res.data.email
+                   this.isAdmin = res.data.isAdmin
                })
         },
         async updateUser(){
-            const postData ={_id: this.id, name: this.name, email:this.email};
+            const postData ={name: this.name, email:this.email, isAdmin:this.isAdmin};
             const headers = { authorization: this.token }
             console.log(postData);
 
             await axios
-            .put("http://localhost:3000/api/users/account"+ postData, {headers: headers})
+            .put("http://localhost:3000/api/users/account/"+this.id, postData, {headers: headers})
             .then(res =>{
                 alert("success")
                 console.log(res.body);
@@ -57,8 +59,7 @@ export default {
 
     },
     async mounted(){
-        console.log(this.$route.params.id)
-        this.getUserById()
+        this.getUserById(this.$route.params.id)
     },
     
 }

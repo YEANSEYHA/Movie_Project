@@ -19,7 +19,7 @@ router.post('/login', authUser)
 router.route('/profile').get(protect,getUserProfile)
 router.route('/:id').delete(deleteUser)
 router.route('/profile').put(updateUserProfile)
-router.route('/account').put(updateUser)
+router.route('/account/:id').put(updateUser)
 router.route('/:id').get(getUserById)
 
 export default router
