@@ -13,13 +13,13 @@
                 <tbody v-for="data in datas" :key="data">
                     <tr>
                         <td data-label="ID">1</td>
-                        <td data-label="Title">{{datas.title}}</td>
-                        <td data-label="Genre">{{datas.genre}}</td>
+                        <td data-label="Title">{{data.title}}</td>
+                        <td data-label="Genre">{{data.genre}}</td>
                         <td data-label="Rating">4 <i class="fas fa-star"></i></td>
                         <td data-label="Action">
-                            <i class="fas fa-edit"></i>
+                            <button ><router-link :to="{ path: '/adminpage/update-movie/'+data._id}"><i class="fas fa-edit m-2"></i></router-link></button>
                             &nbsp;&nbsp;&nbsp;
-                            <i class="fas fa-trash"></i>
+                            <button @click="deleteMovie(data._id)"><i class="fas fa-trash m-2"></i></button>
                         </td>
                     </tr>
                 </tbody>
@@ -35,26 +35,44 @@
 
 <script>
 import axios from 'axios'
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+}
 export default {
     name: 'Listmovie',
+    methods: {
+        async deleteMovie(id) {
+            await axios.delete("http://localhost:3000/api/movies/"+ id,{
+                headers:{
+                    authorization: this.token
+                }
+            }).then(()=>{
+                location.reload();
+          })
+        },
+    },
     data(){
         return{
             datas:[],
             movie:'',
+            token:'',
         }
     },
+    // Mounted user with DB
     async mounted(){
-        var data2 = document.cookie.split("=");
-        console.log(data2[1].split(";")[0])
-       var response= await axios.get("http://localhost:3000/api/movies/",{
+        this.token = "Bearer "+getCookie('token');
+        var response= await axios.get("http://localhost:3000/api/movies",{
            headers:{
-               authorization:"Bearer "+data2[1].split(";")[0]
+               authorization: this.token
            }
        }
        )
 
        this.datas = response.data
-    }
+       console.log(this.datas)
+    },
 }
 </script>
 

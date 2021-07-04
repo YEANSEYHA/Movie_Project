@@ -12,6 +12,7 @@ import Header from '../components/Header'
 import UpdateUser from '../components/UpdateUser'
 import UserProfile from '../components/UserProfile'
 import AdminUpdateUser from '../components/AdminUpdateUser'
+import AdminUpdateMovie from '../components/AdminUpdateMovie'
 
 
 const routes = [
@@ -92,6 +93,11 @@ const routes = [
                         path: "update-account/:id",
                         name: "AdminUpdateUser",
                         component: AdminUpdateUser
+                    },
+                    {
+                        path: "update-movie/:id",
+                        name: "AdminUpdateMovie",
+                        component: AdminUpdateMovie
                     }
                 ]
                 

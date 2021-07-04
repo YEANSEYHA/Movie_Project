@@ -9,7 +9,7 @@ import asyncHandler from 'express-async-handler'
 const getMovies = asyncHandler(async (req, res) => {
     const movies = await Movie.find({})
   
-    res.json({ movies })
+    res.json(movies)
   })
 
 // Fetch    Fetch single movie
@@ -40,12 +40,51 @@ const createMovie = asyncHandler(async (req, res) => {
     
     res.status(201).json(createdMovie)
   })
+// @desc    Delete a movie
+// @route   DELETE /api/movies/:id
+// @access  Private/Admin
+const deleteMovie = asyncHandler(async (req, res) => {
+  const movie = await Movie.findById(req.params.id)
+
+  if (movie) {
+    await movie.remove()
+    res.json({ message: 'movie removed' })
+  } else {
+    res.status(404)
+    throw new Error('Movie not found')
+  }
+})
+
+// @desc    Update a movie
+// @route   PUT /api/movies/:id
+// @access  Private/Admin
+const updateMovie= asyncHandler(async (req, res) => {
+  const {
+    title,
+    genre
+  } = req.body
+
+  const movie = await Movie.findById(req.params.id)
+
+  if (movie) {
+    movie.title = title
+    movie.genre = genre
+
+    const updatedMovie = await movie.save()
+    res.json(updatedMovie)
+  } else {
+    res.status(404)
+    throw new Error('Movie not found')
+  }
+})
 
 
 export {
     getMovies,
     getMovieById,
-    createMovie
+    createMovie,
+    deleteMovie,
+    updateMovie
 }
 
 
