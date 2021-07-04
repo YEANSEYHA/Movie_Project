@@ -5,7 +5,7 @@ import {getMovies, getMovieById, createMovie, deleteMovie , updateMovie} from '.
 
 
 
-router.route('/').get(getMovies).post(protect, admin, createMovie)
+router.route('/').get(getMovies).post(createMovie) //.post(protect, admin, createMovie) not working
 
 router.route('/:id')
     .get(getMovieById)

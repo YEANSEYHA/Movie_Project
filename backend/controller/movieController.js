@@ -32,7 +32,6 @@ const createMovie = asyncHandler(async (req, res) => {
     const { title, genre} = req.body
     
     const createdMovie = await Movie.create({
-        user: req.user._id,
         title,
         genre
       })
