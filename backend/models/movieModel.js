@@ -30,6 +30,10 @@ const movieSchema = mongoose.Schema(
     imageUrl:{
       type: String,
       required: true
+    },
+    videoUrl:{
+      type: String,
+      required: true
     }
    
   },

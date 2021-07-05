@@ -2,6 +2,7 @@
     Dynamic ROute
     <p> The movie id is {{ id }} </p>
     <p> The image url {{ imageUrl }} </p>
+    <p> The image url {{ videoUrl }} </p>
     <div class="movie-details-area" style="background:rgb(112, 104, 104)">
                 <div class="container">
                     <div class="row align-items-center position-relative">
@@ -52,13 +53,13 @@
                     </div>
                 </div>
     </div>
-    <div style="position:relative; overflow:hidden; padding-bottom:56.25%"> <iframe src="https://cdn.jwplayer.com/players/uKFJ8Lzi-kjO9FMuV.html" width="100%" height="100%" frameborder="0" scrolling="auto" title="Real Madrid Vs Liverpool - 3 1. Match Highlights. Uefa Champions League Final 2018" style="position:absolute;" allowfullscreen></iframe> </div>
+    <div style="position:relative; overflow:hidden; padding-bottom:56.25%"> <iframe v-bind:src="videoUrl" width="100%" height="100%" frameborder="0" scrolling="auto" title="Real Madrid Vs Liverpool - 3 1. Match Highlights. Uefa Champions League Final 2018" style="position:absolute;" allowfullscreen></iframe> </div>
 
 </template>
 
 <script>
 export default {
-    props: ['id','imageUrl'],
+    props: ['id','imageUrl','videoUrl'],
     name: 'MovieDetails',
     /* data(){
         return {

@@ -16,10 +16,15 @@
                 <br>
                 <input type="text"  name="imageUrl" v-model="imageUrl">
                 <br>
+
+                <label for="videoUrl">Video URL:</label>
+                <br>
+                <input type="text"  name="videoUrl" v-model="videoUrl">
+                <br>
             
                 
 
-                <button class="signupbtn">Upload Movie</button>
+                <button type="submit" class="signupbtn">Upload Movie</button>
 
             </form>
 
@@ -35,14 +40,15 @@ export default {
             title: '',
             genre: '',
             imageUrl: '',
+            videoUrl: '',
         }
     },
 
     methods:{
       async sendPost(){
-        const postData ={title:this.title, genre:this.genre, imageUrl:this.imageUrl};
+        const postData ={title:this.title, genre:this.genre, imageUrl:this.imageUrl, videoUrl:this.videoUrl};
         await axios
-          .post("http://localhost:3000/api/movies/", postData)
+          .post("http://localhost:3000/api/movies", postData)
           .then(res =>{
             console.log(res.body);
           })

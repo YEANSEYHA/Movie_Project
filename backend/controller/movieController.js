@@ -29,12 +29,13 @@ const getMovieById = asyncHandler(async(req,res)=>{
 // @route   POST /api/movies
 // @access  Private/Admin
 const createMovie = asyncHandler(async (req, res) => {
-    const { title, genre, imageUrl} = req.body
+    const { title, genre, imageUrl, videoUrl} = req.body
     
     const createdMovie = await Movie.create({
         title,
         genre,
-        imageUrl
+        imageUrl,
+        videoUrl
       })
   
     
@@ -62,7 +63,8 @@ const updateMovie= asyncHandler(async (req, res) => {
   const {
     title,
     genre,
-    imageUrl
+    imageUrl,
+    videoUrl
   } = req.body
 
   const movie = await Movie.findById(req.params.id)
@@ -71,6 +73,7 @@ const updateMovie= asyncHandler(async (req, res) => {
     movie.title = title
     movie.genre = genre
     movie.imageUrl = imageUrl
+    movie.videoUrl = videoUrl
 
     const updatedMovie = await movie.save()
     res.json(updatedMovie)
