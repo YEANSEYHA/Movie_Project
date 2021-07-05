@@ -11,7 +11,7 @@
             <ul>
                 <li><router-link to="/">Home</router-link></li>
                 <li><router-link v-if="isAdmin" to="/adminpage"> Dashboard</router-link>
-                    <router-link v-else to="/">About</router-link>
+                    <router-link v-else to="/livestream">LiveStream</router-link>
                     </li>
                 <li><router-link v-if="name==''||name==undefined" to="/signup" >Sign up</router-link></li>
                 <li v-if="name==''||name==undefined" ><router-link to="/login">Log in</router-link></li>

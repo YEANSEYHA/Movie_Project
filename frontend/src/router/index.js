@@ -14,15 +14,11 @@ import UserProfile from '../components/UserProfile'
 import AdminUpdateUser from '../components/AdminUpdateUser'
 import AdminUpdateMovie from '../components/AdminUpdateMovie'
 
-import VideoExample from '../components/VideoExample.vue'
+import LiveStream from '../components/LiveStream.vue'
 
 
 const routes = [
-    {
-        path: "/videoexample",
-        name: "VideoExample",
-        component: VideoExample
-    },
+    
     {
         path: "/",
         name: "index",
@@ -31,6 +27,11 @@ const routes = [
             name:"movies"
         },
         children:[
+            {
+                path: "/livestream",
+                name: "LiveStream",
+                component: LiveStream
+            },
             {
                 path:"profile",
                 name:"profile",
