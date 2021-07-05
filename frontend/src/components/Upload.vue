@@ -12,6 +12,21 @@
                 <input type="text"  name="genre" v-model="genre">
                 <br>
 
+                <label for="year">Release Year:</label>
+                <br>
+                <input type="text"  name="year" v-model="year">
+                <br>
+
+                <label for="duration">Movie Duration :</label>
+                <br>
+                <input type="text"  name="duration" v-model="duration">
+                <br>
+
+                <label for="synopsis">Synopsis</label>
+                <br>
+                <input type="text"  name="synopsis" v-model="synopsis">
+                <br>
+
                 <label for="imageUrl">Image URL:</label>
                 <br>
                 <input type="text"  name="imageUrl" v-model="imageUrl">
@@ -39,6 +54,9 @@ export default {
             return{
             title: '',
             genre: '',
+            year: '',
+            duration: '',
+            synopsis: '',
             imageUrl: '',
             videoUrl: '',
         }
@@ -46,7 +64,7 @@ export default {
 
     methods:{
       async sendPost(){
-        const postData ={title:this.title, genre:this.genre, imageUrl:this.imageUrl, videoUrl:this.videoUrl};
+        const postData ={title:this.title, genre:this.genre, year:this.year, duration:this.duration, synopsis:this.synopsis, imageUrl:this.imageUrl, videoUrl:this.videoUrl};
         await axios
           .post("http://localhost:3000/api/movies", postData)
           .then(res =>{

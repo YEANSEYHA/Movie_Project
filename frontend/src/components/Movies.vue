@@ -17,14 +17,14 @@
 										<!-- <h5 class="title"><a href="http://localhost:8080/moviedetails">{{ movie.title }}</a></h5> -->
                                         
                                         <!-- <button @click="navigateTo({name: 'movie', params: {movieId: movie.id}})"><h5 class="title">{{movie.title}}</h5></button> -->
-                                        <router-link :to="{name: 'MovieDetails', params: { id: movie._id, imageUrl: movie.imageUrl , videoUrl: movie.videoUrl}}"><h5 class="title">{{ movie.title}}</h5></router-link>
-										<span class="date">2021 </span>
+                                        <router-link :to="{name: 'MovieDetails', params: { id: movie._id,title: movie.title, genre: movie.genre, year: movie.year, duration: movie.duration, synopsis: movie.synopsis,  imageUrl: movie.imageUrl , videoUrl: movie.videoUrl}}"><h5 class="title">{{ movie.title}}</h5></router-link>
+										<span class="date">{{movie.year}}</span>
 									</div>
 									<div class="bottom">
 										<ul>
 											<li><span class="quality">hd</span></li>
 											<li>
-												<span class="duration"><i class="far fa-clock"></i> 128 min</span>
+												<span class="duration"><i class="far fa-clock"></i>{{movie.duration}}</span>
 												<span class="rating"><i class="fas fa-thumbs-up"></i> 3.5</span>
 											</li>
 										</ul>

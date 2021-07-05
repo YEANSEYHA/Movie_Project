@@ -6,6 +6,8 @@
                     <th>ID</th>
                     <th>Title</th>
                     <th>Genre</th>
+                    <th>Duration</th>
+                    <th>Release Date</th>
                     <th>Rating</th>
                     <th>Action</th>
                 </thead>
@@ -15,6 +17,8 @@
                         <td data-label="ID">1</td>
                         <td data-label="Title">{{data.title}}</td>
                         <td data-label="Genre">{{data.genre}}</td>
+                        <td data-label="Duration">{{data.duration}}</td>
+                        <td data-label="Release Date">{{data.year}}</td>
                         <td data-label="Rating">4 <i class="fas fa-star"></i></td>
                         <td data-label="Action">
                             <button ><router-link :to="{ path: '/adminpage/update-movie/'+data._id}"><i class="fas fa-edit m-2"></i></router-link></button>
