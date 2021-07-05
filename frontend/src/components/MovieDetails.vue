@@ -1,5 +1,6 @@
 <template>
-    
+    Dynamic ROute
+    <p> The movie id is {{ id}} </p>
     <div class="movie-details-area" style="background:rgb(112, 104, 104)">
                 <div class="container">
                     <div class="row align-items-center position-relative">
@@ -56,8 +57,14 @@
 
 <script>
 export default {
+    props: ['id'],
     name: 'MovieDetails',
-    components: 'Videoplay'
+    components: 'Videoplay',
+    /* data(){
+        return {
+            id: this.$route.params.id
+        }
+    } */
 }
 </script>
 

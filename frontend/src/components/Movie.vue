@@ -1,24 +1,5 @@
 <template>
-	<div class="movie-item mb-50">
-		<div class="movie-poster">
-			<a href="http://localhost:8080/moviedetails"><img src="./movie_details_img.jpg" alt=""></a>
-		</div>
-		<div class="movie-content">
-			<div class="top">
-				<h5 class="title"><a href="http://localhost:8080/moviedetails">{{ movie.title }}</a></h5>
-				<span class="date">2021 </span>
-			</div>
-			<div class="bottom">
-				<ul>
-					<li><span class="quality">hd</span></li>
-					<li>
-						<span class="duration"><i class="far fa-clock"></i> 128 min</span>
-						<span class="rating"><i class="fas fa-thumbs-up"></i> 3.5</span>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
+
 </template>
 
 <script>

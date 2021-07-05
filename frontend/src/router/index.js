@@ -35,9 +35,11 @@ const routes = [
                 component:Movies,
             },
             {
-                path: "moviedetails",
-                name: "moviedetails",
-                component: MovieDetails
+                //Route param
+                path: "movies/:id",
+                name: "MovieDetails",
+                component: MovieDetails,
+                props: true
             },
            
             {
