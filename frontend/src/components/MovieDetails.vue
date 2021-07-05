@@ -47,26 +47,98 @@
                         </div>
                     </div>
                 </div>
+
+                
     </div>
     <center>
         <div style="position:relative; overflow:hidden; padding-bottom:56.25%"> <iframe v-bind:src="videoUrl" width="1080" height="720" frameborder="0" scrolling="auto" title="Real Madrid Vs Liverpool - 3 1. Match Highlights. Uefa Champions League Final 2018"  allowfullscreen></iframe> </div>
     </center>
+      <div class="container-fluid my-5">
+		<div class="row">
+			
+			<div class="col-12">
+
+				<!--- Post Form Begins -->
+                <section class="card">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="posts-tab" data-toggle="tab" href="#posts" role="tab" aria-controls="posts" aria-selected="true">Make a comment
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <form @submit.prevent="postComment" class="card-body">
+                            <label for="comment">Post Comment</label>
+                            <input type="text" placeholder="Comment" name="comment" v-model="comment">
+                            <button class="signupbtn">Post</button>
+                    </form>
+                </section>
+                <!--- Post Form Ends -->
+
+				<!-- Post Begins -->
+				<section class="card mt-4">
+					<div class="border p-2">
+						<!-- post header -->
+						<div class="row m-0">
+							<div class="">
+								<a class="text-decoration-none" href="#">
+									<img class="" src="https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/avat-01-512.png" width="50" height="50" alt="...">
+								</a>
+							</div>
+							<div class="flex-grow-1 pl-2">
+								<a class="text-decoration-none" href="#">
+									<h2 class="text-capitalize h5 mb-0">Shushant Singh</h2>
+								</a> 
+								<p class="small text-secondary m-0 mt-1">1 day ago</p>
+							</div>
+							
+
+						</div>
+						<!-- post body -->
+						<div class="">
+							<p class="my-2">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras 
+								turpis sem, dictum id bibendum eget, malesuada ut massa. Ut scel
+								erisque nulla sed luctus dapibus. Nulla sit amet mi vitae purus sol
+								licitudin venenatis. Praesent et sem urna. Integer vitae lectus nis
+								l. Fusce sapien ante, tristique efficitur lorem et, laoreet ornare lib
+								ero. Nam fringilla 
+							</p>
+						</div>
+						
+					</div>
+				</section>
+				<!-- Post Ends -->
+			</div>
+			
+		</div>
+	</div>
     
 
 </template>
 
 <script>
+import axios from 'axios'
 export default {
     props: ['id','genre','year','duration','synopsis','imageUrl','videoUrl','title'],
     name: 'MovieDetails',
-    /* data(){
-        return {
-            id: this.$route.params.id
+  
+    data (){
+        return{
+            comment: '',
         }
-    } */
-   
+    },
     methods:{
         
+        async postComment(){
+            const postData = {comment: this.comment};
+            await axios.post('http://localhost:3000/api/movies/'+this.id+'/reviews',postData)
+            .then(res =>{
+                alert("Comment success")
+                console.log(res.body);
+            })
+        }
     }
 }
 </script>

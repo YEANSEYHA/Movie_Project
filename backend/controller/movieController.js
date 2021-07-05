@@ -96,7 +96,7 @@ const updateMovie= asyncHandler(async (req, res) => {
 // @route   POST /api/movies/:id/reviews
 // @access  Private
 const createMovieReview = asyncHandler(async (req, res) => {
-  const { report, comment } = req.body
+  const { comment } = req.body
 
   const movie = await Movie.findById(req.params.id)
 
@@ -104,7 +104,6 @@ const createMovieReview = asyncHandler(async (req, res) => {
 
     const review = {
       //name: req.user.name, //name: req.user.name, not working with whom post the report
-      report,
       comment,
       //user: req.user._id, not working either
     }
