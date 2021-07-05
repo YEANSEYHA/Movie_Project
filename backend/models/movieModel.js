@@ -1,10 +1,12 @@
 import mongoose from 'mongoose'
 
+// review table contain all information about movie review comment and report
 const reviewSchema = mongoose.Schema(
   {
+    report: { type: Number },
+    comment: { type: String},
     user: {
       type: mongoose.Schema.Types.ObjectId,
-      required: true,
       ref: 'User',
     },
   },
@@ -35,6 +37,7 @@ const movieSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    reviews: [reviewSchema],
     synopsis:{
       type: String,
       required: true
@@ -47,6 +50,7 @@ const movieSchema = mongoose.Schema(
       type: String,
       required: true
     }
+    
    
   },
   {
