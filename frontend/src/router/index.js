@@ -14,8 +14,15 @@ import UserProfile from '../components/UserProfile'
 import AdminUpdateUser from '../components/AdminUpdateUser'
 import AdminUpdateMovie from '../components/AdminUpdateMovie'
 
+import VideoExample from '../components/VideoExample.vue'
+
 
 const routes = [
+    {
+        path: "/videoexample",
+        name: "VideoExample",
+        component: VideoExample
+    },
     {
         path: "/",
         name: "index",
