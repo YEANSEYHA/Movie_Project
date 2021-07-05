@@ -1,13 +1,14 @@
 <template>
     Dynamic ROute
     <p> The movie id is {{ id }} </p>
+    <p> The image url {{ imageUrl }} </p>
     <div class="movie-details-area" style="background:rgb(112, 104, 104)">
                 <div class="container">
                     <div class="row align-items-center position-relative">
                         <div class="col-xl-3 col-lg-4">
                             <div class="movie-details-img">
                                 <img src="img/poster/movie_details_img.jpg" alt="">
-                                <a href="https://www.youtube.com/watch?v=R2gbPxeNk2E" class="popup-video"><img src="./movie_details_img.jpg" alt=""></a>
+                                <a href="https://www.youtube.com/watch?v=R2gbPxeNk2E" class="popup-video"><img v-bind:src="imageUrl" alt=""></a>
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-8">
@@ -57,9 +58,8 @@
 
 <script>
 export default {
-    props: ['id'],
+    props: ['id','imageUrl'],
     name: 'MovieDetails',
-    components: 'Videoplay',
     /* data(){
         return {
             id: this.$route.params.id

@@ -17,7 +17,7 @@
 										<!-- <h5 class="title"><a href="http://localhost:8080/moviedetails">{{ movie.title }}</a></h5> -->
                                         
                                         <!-- <button @click="navigateTo({name: 'movie', params: {movieId: movie.id}})"><h5 class="title">{{movie.title}}</h5></button> -->
-                                        <router-link :to="{name: 'MovieDetails', params: { id: movie._id}}"><h5 class="title">{{ movie.title}}</h5></router-link>
+                                        <router-link :to="{name: 'MovieDetails', params: { id: movie._id, imageUrl: movie.imageUrl}}"><h5 class="title">{{ movie.title}}</h5></router-link>
 										<span class="date">2021 </span>
 									</div>
 									<div class="bottom">

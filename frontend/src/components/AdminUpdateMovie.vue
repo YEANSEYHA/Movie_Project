@@ -11,6 +11,12 @@
                 <br>
                 <input type="text" placeholder="New genre" name="genre" v-model="genre">
                 <br>
+                
+                <label for="imageUrl">Update imageUrl</label>
+                <br>
+                <input type="text" placeholder="Update image url" name="imageUrl" v-model="imageUrl">
+                <br>
+
                 <br>
                 <button class="signupbtn"   >Update</button>
 
@@ -30,6 +36,7 @@ export default{
             id: '',
             title: '',
             genre: '',
+            imageUrl: '',
 
             }
     },
@@ -41,13 +48,14 @@ export default{
                    this.id = res.data._id
                    this.title= res.data.title
                    this.genre = res.data.genre
+                   this.imageUrl = res.data.imageUrl
                    this.isAdmin = res.data.isAdmin
                 
                })
         },
 
         async updateMovie(){
-            const postData ={title: this.title, genre:this.genre,isAdmin:this.isAdmin};
+            const postData ={title: this.title, genre:this.genre,isAdmin:this.isAdmin, imageUrl:this.imageUrl};
             const headers = { authorization: this.token }
             console.log(postData);
 
