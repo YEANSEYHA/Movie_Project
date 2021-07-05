@@ -2,12 +2,12 @@
     <div class="tv-series-area tv-series-bg" style="background:rgb(99, 98, 98)" >
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-xl-3 col-lg-4 col-sm-6" :key="movie.id" v-for="movie in movies">
+                <div class="col-xl-3 col-lg-4 col-sm-6" :key="movie._id" v-for="movie in movies">
                 <!-- <div class="col-xl-3 col-lg-4 col-sm-6" > -->
                     <!-- <Movie :movie="movie"></Movie> -->
 							<div class="movie-item mb-50" :movie="movie">
 								<div class="movie-poster">
-									<a href="#"><img v-bind:src="movie.img" alt=""></a>
+									<a href="#"><img v-bind:src="movie.imageUrl" alt=""></a>
 									
 
 								</div>
@@ -17,7 +17,7 @@
 										<!-- <h5 class="title"><a href="http://localhost:8080/moviedetails">{{ movie.title }}</a></h5> -->
                                         
                                         <!-- <button @click="navigateTo({name: 'movie', params: {movieId: movie.id}})"><h5 class="title">{{movie.title}}</h5></button> -->
-                                        <router-link :to="{name: 'MovieDetails', params: { id: movie.id}}"><h5 class="title">{{ movie.title}}</h5></router-link>
+                                        <router-link :to="{name: 'MovieDetails', params: { id: movie._id}}"><h5 class="title">{{ movie.title}}</h5></router-link>
 										<span class="date">2021 </span>
 									</div>
 									<div class="bottom">
@@ -38,7 +38,12 @@
 </template>
 
 <script>
-
+import axios from 'axios';
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+}
 export default {
     name: 'Movies',
   
@@ -48,10 +53,26 @@ export default {
     },
 data(){
     return{
-      movies: []
+      movies: [],
+      user: '',
+      token: ''
     }
   },
-  created(){
+async mounted(){
+        this.token = "Bearer "+getCookie('token');
+        var response= await axios.get("http://localhost:3000/api/movies/",{
+           headers:{
+               authorization: this.token
+           }
+       }
+       )
+
+       this.movies = response.data
+       console.log(this.movies)
+    },
+
+
+  /* created(){
     this.movies = [
       {
       id: 1,
@@ -90,7 +111,7 @@ data(){
       }
     
     ]
-  }
+  } */
 }
 </script>
 

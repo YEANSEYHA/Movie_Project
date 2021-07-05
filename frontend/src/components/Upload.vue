@@ -11,10 +11,15 @@
                 <br>
                 <input type="text"  name="genre" v-model="genre">
                 <br>
+
+                <label for="imageUrl">Image URL:</label>
                 <br>
+                <input type="text"  name="imageUrl" v-model="imageUrl">
+                <br>
+            
                 
 
-                <button class="signupbtn">Sign Up</button>
+                <button class="signupbtn">Upload Movie</button>
 
             </form>
 
@@ -28,13 +33,14 @@ export default {
         data(){
             return{
             title: '',
-            genre: ''
+            genre: '',
+            imageUrl: '',
         }
     },
 
     methods:{
       async sendPost(){
-        const postData ={title:this.title, genre:this.genre};
+        const postData ={title:this.title, genre:this.genre, imageUrl:this.imageUrl};
         await axios
           .post("http://localhost:3000/api/movies/", postData)
           .then(res =>{
