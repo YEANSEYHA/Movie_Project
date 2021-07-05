@@ -1,8 +1,16 @@
 <template>
+    <center style="background:rgb(99, 98, 98)" >
+        <label>Search movie by title</label>
+        <input type="text"  v-model="search" style="background:rgb(99, 98, 98)">
+    </center>
+    
+
     <div class="tv-series-area tv-series-bg" style="background:rgb(99, 98, 98)" >
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-xl-3 col-lg-4 col-sm-6" :key="movie._id" v-for="movie in movies">
+
+                
+                <div class="col-xl-3 col-lg-4 col-sm-6" :key="movie._id" v-for="movie in filteredMovies">
                 <!-- <div class="col-xl-3 col-lg-4 col-sm-6" > -->
                     <!-- <Movie :movie="movie"></Movie> -->
 							<div class="movie-item mb-50" :movie="movie">
@@ -55,7 +63,8 @@ data(){
     return{
       movies: [],
       user: '',
-      token: ''
+      token: '',
+      search:'',
     }
   },
 async mounted(){
@@ -70,6 +79,11 @@ async mounted(){
        this.movies = response.data
        console.log(this.movies)
     },
+    computed:{
+        filteredMovies(){
+            return this.movies.filter(movie => movie.title.toLowerCase().includes(this.search.toLowerCase()))
+        }
+    }
 
 
   /* created(){
