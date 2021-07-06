@@ -25,7 +25,7 @@
 										<!-- <h5 class="title"><a href="http://localhost:8080/moviedetails">{{ movie.title }}</a></h5> -->
                                         
                                         <!-- <button @click="navigateTo({name: 'movie', params: {movieId: movie.id}})"><h5 class="title">{{movie.title}}</h5></button> -->
-                                        <router-link :to="{name: 'MovieDetails', params: { id: movie._id,title: movie.title, genre: movie.genre, year: movie.year, duration: movie.duration, synopsis: movie.synopsis,  imageUrl: movie.imageUrl , videoUrl: movie.videoUrl}}"><h5 class="title">{{ movie.title}}</h5></router-link>
+                                        <router-link :to="{name: 'MovieDetails', params: { id: movie._id,title: movie.title, genre: movie.genre, year: movie.year, duration: movie.duration, synopsis: movie.synopsis,  imageUrl: movie.imageUrl , videoUrl: movie.videoUrl, reviews: movie.reviews}}"><h5 class="title">{{ movie.title}}</h5></router-link>
 										<span class="date">{{movie.year}}</span>
 									</div>
 									<div class="bottom">
@@ -89,46 +89,7 @@ async mounted(){
     }
 
 
-  /* created(){
-    this.movies = [
-      {
-      id: 1,
-      title: 'Aasdasdr',
-      img: 'https://upload.wikimedia.org/wikipedia/en/0/0d/Avengers_Endgame_poster.jpg',
-      videoUrl:''
-      },
-      {
-        id: 2,
-        title: "Endgame",
-        img: 'https://upload.wikimedia.org/wikipedia/en/0/0d/Avengers_Endgame_poster.jpg'
-      },
-      {
-        id: 3,
-        title: "Endgame",
-        img: 'https://upload.wikimedia.org/wikipedia/en/0/0d/Avengers_Endgame_poster.jpg'
-      }
-      ,
-      {
-        id: 4,
-        title: "Endgame",
-        img: 'https://upload.wikimedia.org/wikipedia/en/0/0d/Avengers_Endgame_poster.jpg'
-      }
-      ,
-      {
-        id: 2,
-        title: "Endgame",
-        img: 'https://upload.wikimedia.org/wikipedia/en/0/0d/Avengers_Endgame_poster.jpg'
-      }
-      ,
-      {
-        id: 2,
-        title: "Endgame",
-        img: 'https://upload.wikimedia.org/wikipedia/en/0/0d/Avengers_Endgame_poster.jpg',
-        videoUrl:''
-      }
-    
-    ]
-  } */
+ 
 }
 </script>
 

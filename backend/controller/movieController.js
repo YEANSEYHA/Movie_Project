@@ -8,7 +8,7 @@ import asyncHandler from 'express-async-handler'
 // @access  Public
 const getMovies = asyncHandler(async (req, res) => {
     const movies = await Movie.find({})
-  
+    console.log(movies[0].reviews)
     res.json(movies)
   })
 
@@ -94,7 +94,6 @@ const updateMovie= asyncHandler(async (req, res) => {
 
 // @desc    Create new review
 // @route   POST /api/movies/:id/reviews
-// @access  Private
 const createMovieReview = asyncHandler(async (req, res) => {
   const { comment } = req.body
 

@@ -1,5 +1,5 @@
 <template>
-
+    <h2>reviews{{comment}}</h2>
     <div class="movie-details-area" style="background:rgb(112, 104, 104)">
                 <div class="container">
                     <div class="row align-items-center position-relative">
@@ -96,14 +96,10 @@
 
 						</div>
 						<!-- post body -->
-						<div class="">
-							<p class="my-2">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras 
-								turpis sem, dictum id bibendum eget, malesuada ut massa. Ut scel
-								erisque nulla sed luctus dapibus. Nulla sit amet mi vitae purus sol
-								licitudin venenatis. Praesent et sem urna. Integer vitae lectus nis
-								l. Fusce sapien ante, tristique efficitur lorem et, laoreet ornare lib
-								ero. Nam fringilla 
+						<div class="" v-for="review in reviews" :key="review" >
+							<p class="my-2"  >
+								{{review.comment}}
+                
 							</p>
 						</div>
 						
@@ -121,13 +117,39 @@
 <script>
 import axios from 'axios'
 export default {
-    props: ['id','genre','year','duration','synopsis','imageUrl','videoUrl','title'],
+//    props: ['id','genre','year','duration','synopsis','imageUrl','videoUrl','title','reviews'], 
+    /* props:{
+        id: String,
+        genre: String,
+        year: String,
+        duration: String,
+        synopsis: String,
+        imageUrl: String,
+        videoUrl: String,
+        title: String,
+    }, */
     name: 'MovieDetails',
   
     data (){
         return{
             comment: '',
+            reviews:[],
+            title: '',
+            id: '',
+            genre: '',
+            year:'',
+            duration:'',
+            synopsis:'',
+            imageUrl:'',
+            videoUrl:'',
+
         }
+    },
+    async mounted(){
+        let {data} = await axios.get("http://localhost:3000/api/movies/"+this.id);
+        this.reviews=data.reviews,
+        this.imageUrl=data.imageUrl,
+        
     },
     methods:{
         
@@ -137,9 +159,15 @@ export default {
             .then(res =>{
                 alert("Comment success")
                 console.log(res.body);
+                console.log(this.reviews)
             })
-        }
-    }
+        },
+
+       
+
+    },
+     
+        
 }
 </script>
 
