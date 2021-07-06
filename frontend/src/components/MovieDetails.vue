@@ -1,5 +1,4 @@
 <template>
-    <h2>reviews{{comment}}</h2>
     <div class="movie-details-area" style="background:rgb(112, 104, 104)">
                 <div class="container">
                     <div class="row align-items-center position-relative">
@@ -120,27 +119,43 @@ export default {
 //    props: ['id','genre','year','duration','synopsis','imageUrl','videoUrl','title','reviews'], 
     props:{
         id: String,
-        genre: String,
+        /* genre: String,
         year: String,
         duration: String,
         synopsis: String,
         imageUrl: String,
-        videoUrl: String,
-        title: String,
+        videoUrl: String, */
+        /* title: String, */
     },
     name: 'MovieDetails',
   
     data (){
         return{
-            comment: '',
-            reviews:[],
+            
+            genre:"",
+            year:"",
+            duration:"",
+            synopsis:"",
+            imageUrl:"",
+            videoUrl:"",
+            title:"",
+
+            reviews:[]
             
             
         }
     },
     async mounted(){
         let {data} = await axios.get("http://localhost:3000/api/movies/"+this.id);
-        this.reviews=data.reviews
+        
+        this.reviews=data.reviews,
+        this.title=data.title
+        this.duration=data.duration
+        this.synopsis=data.synopsis
+        this.imageUrl=data.imageUrl
+        this.videoUrl=data.videoUrl
+        this.genre=data.genre
+
     },
     methods:{
         
