@@ -1,11 +1,11 @@
 <template>
-    <center style="background:rgb(99, 98, 98)" >
-        <label>Search movie by title</label>
-        <input type="text"  v-model="search" style="background:rgb(99, 98, 98)">
+<div>
+    <center class="search-movie" >
+        <input type="text" placeholder="Search by Title" v-model="search">
     </center>
     
 
-    <div class="tv-series-area tv-series-bg" style="background:rgb(99, 98, 98)" >
+    <div class="tv-series-area tv-series-bg" style="background:rgb(99, 98, 98) ">
         <div class="container">
             <div class="row justify-content-center">
 
@@ -43,6 +43,7 @@
             </div>
         </div>
     </div>
+</div>
 </template>
 
 <script>
@@ -100,6 +101,31 @@ async mounted(){
 @import "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css";
 @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css";
 
+/* search movie */
+
+.search-movie {
+    background:rgb(99, 98, 98);
+    padding: 10px 10px 0 10px;
+    
+    border-color: rgb(99, 98, 98);
+    
+    
+}
+input[type=text] {
+  border-radius: 10px;
+  width: 50%;
+  height: 35px;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+input[type=text]:hover {
+  background-color: #ddd;
+  outline: none;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
 
 /*-- Margin Bottom --*/
 

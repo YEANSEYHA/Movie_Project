@@ -85,6 +85,7 @@ form {
 
 input[type=email], input[type=password] {
   width: 100%;
+  height: 50px;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
@@ -122,7 +123,7 @@ button:hover {
   
   padding: 10px 18px;
   color: #f1f1f1;
-  background-color: blue;
+  background-color: #04AA6D;
   border-radius: 25px;
   float: left;
   width: 50%;

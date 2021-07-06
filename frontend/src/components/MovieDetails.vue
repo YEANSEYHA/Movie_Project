@@ -1,4 +1,5 @@
 <template>
+<div>
     <div class="movie-details-area" style="background:rgb(112, 104, 104)">
                 <div class="container">
                     <div class="row align-items-center position-relative">
@@ -49,15 +50,51 @@
 
                 
     </div>
-    <center>
-        <div style="position:relative; overflow:hidden; padding-bottom:56.25%"> <iframe v-bind:src="videoUrl" width="1080" height="720" frameborder="0" scrolling="auto" title="Real Madrid Vs Liverpool - 3 1. Match Highlights. Uefa Champions League Final 2018"  allowfullscreen></iframe> </div>
+    <center style="background:rgb(112, 104, 104)">
+        <div style="position:relative; overflow:hidden; padding-bottom:56.25%; padding-top:10px;  height: 720px "> 
+            <iframe v-bind:src="videoUrl" width="1080" height="720" frameborder="0" scrolling="auto" title="Real Madrid Vs Liverpool - 3 1. Match Highlights. Uefa Champions League Final 2018"  allowfullscreen></iframe>
+        </div>
     </center>
       <div class="container-fluid my-5">
 		<div class="row">
 			
 			<div class="col-12">
 
-				<!--- Post Form Begins -->
+				
+
+				<!-- Post Begins -->
+				<section class="card mt-4">
+					<div class="border p-2">
+						<!-- post header -->
+						<div class="row m-0">
+
+							<!-- <div class="">
+								<a class="text-decoration-none" href="#">
+									<img class="" src="https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/avat-01-512.png" width="50" height="50" alt="...">
+								</a>
+							</div> -->
+							<div class="flex-grow-1 pl-2">
+								<a class="text-decoration-none" href="#">
+									<h2 class="text-capitalize h5 mb-0" > Comment Box</h2>
+								</a> 
+								<!-- <p class="small text-secondary m-0 mt-1">1 day ago</p> -->
+							</div>
+							
+
+						</div>
+						<!-- post body -->
+						<div class="" v-for="review in reviews" :key="review" >
+							<p class="my-2" style="color: black;" >
+								<a style="font-weight: bold;">Commenter:</a> {{review.comment}}
+                
+							</p>
+						</div>
+						
+					</div>
+				</section>
+				<!-- Post Ends -->
+
+                <!--- Post Form Begins -->
                 <section class="card">
                     <div class="card-header">
                         <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
@@ -68,49 +105,18 @@
                         </ul>
                     </div>
                     <form @submit.prevent="postComment" class="card-body">
-                            <label for="comment">Post Comment</label>
-                            <input type="text" placeholder="Comment" name="comment" v-model="comment">
+                            
+                            <textarea placeholder="Comment Here" name="comment" rows="4" cols="100" v-model="comment"></textarea>
                             <button class="signupbtn">Post</button>
                     </form>
                 </section>
                 <!--- Post Form Ends -->
-
-				<!-- Post Begins -->
-				<section class="card mt-4">
-					<div class="border p-2">
-						<!-- post header -->
-						<div class="row m-0">
-							<div class="">
-								<a class="text-decoration-none" href="#">
-									<img class="" src="https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/avat-01-512.png" width="50" height="50" alt="...">
-								</a>
-							</div>
-							<div class="flex-grow-1 pl-2">
-								<a class="text-decoration-none" href="#">
-									<h2 class="text-capitalize h5 mb-0">Shushant Singh</h2>
-								</a> 
-								<p class="small text-secondary m-0 mt-1">1 day ago</p>
-							</div>
-							
-
-						</div>
-						<!-- post body -->
-						<div class="" v-for="review in reviews" :key="review" >
-							<p class="my-2"  >
-								{{review.comment}}
-                
-							</p>
-						</div>
-						
-					</div>
-				</section>
-				<!-- Post Ends -->
 			</div>
 			
 		</div>
 	</div>
     
-
+</div>
 </template>
 
 <script>
@@ -180,6 +186,27 @@ export default {
 <style scoped>
 @import "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css";
 @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css";
+
+/* comment area */
+
+.card-body button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 30%;
+  opacity: 0.9;
+  float: right;
+}
+.card-body button:hover {
+  opacity:1;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+
+/* end */
 
 .movie-details-area {
     background-position: top center;

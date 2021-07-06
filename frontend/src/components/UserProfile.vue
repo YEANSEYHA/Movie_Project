@@ -44,6 +44,7 @@ export default {
   width: 500px;
   height: 26vh;
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+  background-color: aquamarine;
 }
 .flex-edit {
 

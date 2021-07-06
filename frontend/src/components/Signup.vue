@@ -80,6 +80,7 @@ body {
 input[type=text], input[type=email], input[type=password] {
   border-radius: 10px;
   width: 100%;
+  height: 35px;
   padding: 15px;
   margin: 5px 0 22px 0;
   display: inline-block;

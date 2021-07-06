@@ -3,16 +3,14 @@
         <div class="flexbox-item" >
             <form class="container" @submit.prevent="updateUser">
                 <p><a style="text-decoration-line: underline"> <b>Noted: </b> </a> Just input what you want to change!</p>
-                <label for="name">New Username</label>
-                <br>
+                
                 <input type="text" placeholder="New Username" name="name" v-model="name">
                 <br>
-                <label for="Genre">New email:</label>
                 <br>
                 <input type="email" placeholder="New Email" name="email" v-model="email">
                 <br>
                 <br>
-                <button class="signupbtn"   >Update</button>
+                <button >Update</button>
 
             </form>
 
@@ -72,18 +70,20 @@ export default {
 .container {
    padding: 16px;
    width: 500px;
+   
    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
    border-radius: 15px;
    background-color: aquamarine;
 }
 input[type=email], input[type=text] {
   width: 100%;
-  padding: 12px 20px;
+  height: 33px;
+  padding: 20px 20px;
   margin: 8px 0;
   display: inline-block;
   border: none;
   box-sizing: border-box;
-  border-radius: 15px;
+  border-radius: 5px;
   background: #f1f1f1;
 }
 input[type=email]:hover {
@@ -94,15 +94,24 @@ input[type=text]:hover {
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
-.signup button{
-    border-radius: 5px;
-    
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:1;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 
-p {
-    color: black;
-}
+
 p a {
     text-decoration-line: underline;
 }

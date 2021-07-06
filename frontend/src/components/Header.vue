@@ -10,9 +10,8 @@
             <div class="navbar-links" >
             <ul>
                 <li><router-link to="/">Home</router-link></li>
-                <li><router-link v-if="isAdmin" to="/adminpage"> Dashboard</router-link>
-                    <router-link v-else to="/livestream">LiveStream</router-link>
-                    </li>
+                <li><router-link v-if="isAdmin==true" to="/adminpage"> Dashboard</router-link></li>
+                <li><router-link to="/livestream">LiveStream</router-link></li>
                 <li><router-link v-if="name==''||name==undefined" to="/signup" >Sign up</router-link></li>
                 <li v-if="name==''||name==undefined" ><router-link to="/login">Log in</router-link></li>
                 <li v-else><router-link to="/profile" >{{name}}</router-link></li>
@@ -23,12 +22,7 @@
                     <router-link v-else @click="logout" to="/">logout</router-link>
                     </li>
                     
-                <div class="search-container">
-                    <form action="/action_page.php" >
-                    <input type="text" placeholder="Search.." name="search">
-                    <button type="submit"><i class="fa fa-search"></i></button>
-                    </form>
-                </div>
+                
             </ul>
             </div>
         </nav>
