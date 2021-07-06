@@ -118,7 +118,7 @@
 import axios from 'axios'
 export default {
 //    props: ['id','genre','year','duration','synopsis','imageUrl','videoUrl','title','reviews'], 
-    /* props:{
+    props:{
         id: String,
         genre: String,
         year: String,
@@ -127,29 +127,20 @@ export default {
         imageUrl: String,
         videoUrl: String,
         title: String,
-    }, */
+    },
     name: 'MovieDetails',
   
     data (){
         return{
             comment: '',
             reviews:[],
-            title: '',
-            id: '',
-            genre: '',
-            year:'',
-            duration:'',
-            synopsis:'',
-            imageUrl:'',
-            videoUrl:'',
-
+            
+            
         }
     },
     async mounted(){
         let {data} = await axios.get("http://localhost:3000/api/movies/"+this.id);
-        this.reviews=data.reviews,
-        this.imageUrl=data.imageUrl,
-        
+        this.reviews=data.reviews
     },
     methods:{
         
