@@ -15,16 +15,8 @@ const importData = async () =>{
     try{
        
 
-        const createdUsers = await User.insertMany(users)
-        const adminUser = createdUsers[0]._id
-        const adminUser = createdUsers[1]._id
-        const adminUser = createdUsers[3]._id
-        
-        const sampleMovies = movies.map(movie =>{
-            return{ ...movie, user: adminUser}
-        })
-
-        await Movie.insertMany(sampleMovies)
+        await User.insertMany(users)
+    
         console.log('Data imported')
         process.exit()
     }catch(error){
