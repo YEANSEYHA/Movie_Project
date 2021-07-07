@@ -14,7 +14,7 @@ import {protect} from '../middleware/authMiddleware.js'
 
 
 
-router.route('/signup').post(registerUser).get(protect, getUsers)
+router.route('/signup').post(registerUser).get(getUsers)
 router.post('/login', authUser)
 router.route('/profile').get(protect,getUserProfile)
 router.route('/:id').delete(deleteUser)

@@ -14,6 +14,10 @@
             <router-link to="/adminpage/upload">
                 <button style="width:100%; height:50px; border-radius: 5px; background-color: #04AA6D; color: #f1f1f1">Upload Movie</button>
             </router-link>
+            <router-link to="/adminpage/reports">
+                <button style="width:100%; height:50px; border-radius: 5px; background-color: #04AA6D; color: #f1f1f1">Reports Message</button>
+            </router-link>
+
             
         </div>
         <router-view></router-view>       

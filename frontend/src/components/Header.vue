@@ -1,7 +1,8 @@
 <template>
     <div class="header-box">
         <nav class="navbar">
-            <div class="brand-title">Palace Cinema</div>
+            <router-link to="/"><div class="brand-title">Palace Cinema</div></router-link>
+            
             <router-link to="/" class="toggle-button">
             <span class="bar"></span>
             <span class="bar"></span>

@@ -15,6 +15,7 @@ import AdminUpdateUser from '../components/AdminUpdateUser'
 import AdminUpdateMovie from '../components/AdminUpdateMovie'
 
 import LiveStream from '../components/LiveStream.vue'
+import ReportMessage from '../components/ReportMessage.vue'
 
 
 const routes = [
@@ -108,6 +109,11 @@ const routes = [
                         path: "update-movie/:id",
                         name: "AdminUpdateMovie",
                         component: AdminUpdateMovie
+                    },
+                    {
+                        path: "reports",
+                        name: "ReportMessage",
+                        component: ReportMessage
                     }
                 ]
                 

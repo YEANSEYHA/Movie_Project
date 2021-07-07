@@ -28,7 +28,7 @@ export default {
           this.datas=document.cookie.split("=")[3]
       }
   },
-  created(){
+  /* created(){
     this.movies = [
       {
       id: 1,
@@ -47,7 +47,7 @@ export default {
         title: "Endgame",
       }
     ]
-  }
+  } */
 }
 </script>
 
