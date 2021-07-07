@@ -1,4 +1,5 @@
 import Movie from '../models/movieModel.js'
+import Report from '../models/reportModel.js'
 import asyncHandler from 'express-async-handler'
 
 
@@ -8,9 +9,11 @@ import asyncHandler from 'express-async-handler'
 // @access  Public
 const getMovies = asyncHandler(async (req, res) => {
     const movies = await Movie.find({})
-    console.log(movies[0].reviews)
+    /* console.log(movies[0].reviews) */
     res.json(movies)
   })
+
+
 
 // Fetch    Fetch single movie
 // @route   GET /api/movies/:id
@@ -44,6 +47,7 @@ const createMovie = asyncHandler(async (req, res) => {
     
     res.status(201).json(createdMovie)
   })
+
 // @desc    Delete a movie
 // @route   DELETE /api/movies/:id
 // @access  Private/Admin
@@ -115,13 +119,32 @@ const createMovieReview = asyncHandler(async (req, res) => {
 })
 
 
+
+// Report Technical problem
+const createReport = asyncHandler(async(req, res) =>{
+  const {movietitle, message} = req.body
+  const createdReport = await Report.create({
+    movietitle,
+    message
+  })
+  res.status(201).json(createdReport)
+})
+
+// Fetch all report back
+const getReport = asyncHandler(async (req, res) => {
+  const reports = await Report.find({})
+  res.json(reports)
+})
+
 export {
     getMovies,
     getMovieById,
     createMovie,
     deleteMovie,
     updateMovie,
-    createMovieReview
+    createMovieReview,
+    createReport,
+    getReport
 }
 
 

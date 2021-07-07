@@ -37,7 +37,7 @@
                                             <h6>Prime Video</h6>
                                             <span>Streaming Channels</span>
                                         </li>
-                                        <li class="watch"><a href="https://www.youtube.com/watch?v=R2gbPxeNk2E" class="btn popup-video"><i class="fas fa-play"></i> Watch Now</a></li>
+                                        <li class="watch"><a href="#" class="btn popup-video"><i class="fas fa-play"></i> Watch Now</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -115,6 +115,34 @@
 			
 		</div>
 	</div>
+    <div class="container-fluid my-5">
+		<div class="row">
+			
+			<div class="col-12">
+
+                <!--- Post Form Begins -->
+                <section class="card">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="posts-tab" data-toggle="tab" href="#posts" role="tab" aria-controls="posts" aria-selected="true">Report Technical Problems
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <form @submit.prevent="postReport" class="card-body">
+
+                            <label for="movietitle">Enter movie title or URL</label>
+                            <input type="text" id="movietitle" name="movietitle" v-model="movietitle"><br><br>
+                            <textarea placeholder="Report the technical problems" name="message" rows="4" cols="100" v-model="message"></textarea>
+                            <button class="signupbtn">Post</button>
+                    </form>
+                </section>
+                <!--- Post Form Ends -->
+			</div>
+			
+		</div>
+	</div>
     
 </div>
 </template>
@@ -145,10 +173,7 @@ export default {
             imageUrl:"",
             videoUrl:"",
             title:"",
-
             reviews:[]
-            
-            
         }
     },
     async mounted(){
@@ -174,12 +199,16 @@ export default {
                 console.log(this.reviews)
             })
         },
-
-       
-
+        async postReport(){
+            const postData = {movietitle: this.movietitle, message: this.message}
+            await axios.post('http://localhost:3000/api/movies/reports', postData)
+            .then(res =>{
+                alert("Report Successfully")
+                console.log(res.body)
+            })
+        }
     },
-     
-        
+       
 }
 </script>
 
