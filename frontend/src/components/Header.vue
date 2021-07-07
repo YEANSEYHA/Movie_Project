@@ -1,8 +1,10 @@
 <template>
     <div class="header-box">
         <nav class="navbar">
-            <router-link to="/"><div class="brand-title">Palace Cinema</div></router-link>
-            
+            <div class="brand-title" >
+                <router-link to="/">Palace Cinema</router-link>
+            </div>
+
             <router-link to="/" class="toggle-button">
             <span class="bar"></span>
             <span class="bar"></span>
@@ -105,6 +107,18 @@ body {
 .brand-title {
     font-size: 1.5rem;
     margin: .5rem;
+}
+
+.brand-title router-link {
+    color: red;
+}
+
+.brand-title :hover {
+    text-decoration: none;
+    
+    height: 20px;
+    border-radius: 5px;
+    color: red;  
 }
 
 .navbar-links {

@@ -132,8 +132,7 @@
                     </div>
                     <form @submit.prevent="postReport" class="card-body">
 
-                            <label for="movietitle">Enter movie title or URL</label>
-                            <input type="text" id="movietitle" name="movietitle" v-model="movietitle"><br><br>
+                            <input type="text" id="movietitle" placeholder="Enter movie title or URL" name="movietitle" v-model="movietitle"><br><br>
                             <textarea placeholder="Report the technical problems" name="message" rows="4" cols="100" v-model="message"></textarea>
                             <button class="signupbtn">Post</button>
                     </form>
