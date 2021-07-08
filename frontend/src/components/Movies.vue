@@ -14,6 +14,7 @@
                 <!-- <div class="col-xl-3 col-lg-4 col-sm-6" > -->
                     <!-- <Movie :movie="movie"></Movie> -->
 							<div class="movie-item mb-50" :movie="movie">
+                            <router-link :to="{name: 'MovieDetails', params: { id: movie._id} }">
 								<div class="movie-poster">
 									<a href="#"><img v-bind:src="movie.imageUrl" alt=""></a>
 									
@@ -25,7 +26,7 @@
 										<!-- <h5 class="title"><a href="http://localhost:8080/moviedetails">{{ movie.title }}</a></h5> -->
                                         
                                         <!-- <button @click="navigateTo({name: 'movie', params: {movieId: movie.id}})"><h5 class="title">{{movie.title}}</h5></button> -->
-                                        <router-link :to="{name: 'MovieDetails', params: { id: movie._id,title: movie.title, genre: movie.genre, year: movie.year, duration: movie.duration, synopsis: movie.synopsis,  imageUrl: movie.imageUrl , videoUrl: movie.videoUrl, reviews: movie.reviews}}"><h5 class="title">{{ movie.title}}</h5></router-link>
+                                        <h5 class="title">{{ movie.title}}</h5>
 										<span class="date">{{movie.year}}</span>
 									</div>
 									<div class="bottom">
@@ -33,11 +34,12 @@
 											<li><span class="quality">hd</span></li>
 											<li>
 												<span class="duration"><i class="far fa-clock"></i>{{movie.duration}}</span>
-												<span class="rating"><i class="fas fa-thumbs-up"></i> 3.5</span>
+												<span class="rating"><i class="fas fa-thumbs-up"></i>{{movie.nbLike}}</span>
 											</li>
 										</ul>
 									</div>
 								</div>
+                            </router-link>
 							</div>                  
                 </div>
             </div>

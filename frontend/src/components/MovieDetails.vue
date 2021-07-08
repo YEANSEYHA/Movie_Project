@@ -32,7 +32,7 @@
                                 <p>{{synopsis}}</p>
                                 <div class="movie-details-prime">
                                     <ul>
-                                        <li class="share"><a @click="clickLike(movie.id)" href="#"><i class="fas fa-thumbs-up"></i> 100</a></li>
+                                        <li class="share"><a @click="clickLike()" href="#">{{nbLike}}<i class="fas fa-thumbs-up"></i></a></li>
                                         <li class="streaming">
                                             <h6>Prime Video</h6>
                                             <span>Streaming Channels</span>
@@ -173,7 +173,8 @@ export default {
             imageUrl:"",
             videoUrl:"",
             title:"",
-            reviews:[]
+            reviews:[],
+            nbLike:""
         }
     },
     async mounted(){
@@ -186,6 +187,7 @@ export default {
         this.imageUrl=data.imageUrl
         this.videoUrl=data.videoUrl
         this.genre=data.genre
+        this.nbLike=data.nbLike
 
     },
     methods:{
@@ -208,7 +210,11 @@ export default {
             })
         },
         async clickLike(){
-            await axios.post('http://localhost:3000/api/movies')
+            await axios.post('http://localhost:3000/api/movies/'+this.id+'/like-movie')
+            .then(res =>{
+                alert("Liked Successfully")
+                console.log(res.body)
+            })
         }
     },
        
