@@ -32,7 +32,7 @@
                                 <p>{{synopsis}}</p>
                                 <div class="movie-details-prime">
                                     <ul>
-                                        <li  class="share"><a  href="#">{{nbLike}}<i @click="clickLike()" class="fas fa-thumbs-up"></i>Likes</a></li>
+                                        <li  class="share"><a  href="#">{{nbLike}}<i @click="clickLike()" class="fas fa-thumbs-up"></i></a></li>
                                         <li class="streaming">
                                             <h6>Prime Video</h6>
                                             <span>Streaming Channels</span>
@@ -43,7 +43,7 @@
                             </div>
                         </div>
                         <div class="movie-details-btn">
-                            <a href="#" class="download-btn" download="">Download <img src="fonts/download.svg" alt=""></a>
+                            <a v-bind:href="downloadUrl" class="download-btn" download="">Download <img src="fonts/download.svg" alt=""></a>
                         </div>
                     </div>
                 </div>
@@ -54,6 +54,7 @@
         
             <div style="position:relative; overflow:hidden; padding-bottom:56.25%; padding-top:10px;  height: 720px ; background:rgb(112, 104, 104)"> 
                 <iframe  v-bind:src="videoUrl" width="1080" height="720" frameborder="0" scrolling="auto" allowfullscreen style="background:rgb(112, 104, 104)"   ></iframe>
+                
             </div>
         
     </center> 
@@ -177,6 +178,7 @@ export default {
             title:"",
             reviews:[],
             nbLike:"",
+            downloadUrl:"",
             showVideo: false
         }
     },
@@ -191,6 +193,7 @@ export default {
         this.videoUrl=data.videoUrl
         this.genre=data.genre
         this.nbLike=data.nbLike
+        this.downloadUrl=data.downloadUrl
 
     },
     methods:{

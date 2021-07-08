@@ -41,7 +41,8 @@ const createMovie = asyncHandler(async (req, res) => {
         duration,
         synopsis,
         imageUrl,
-        videoUrl
+        videoUrl,
+        downloadUrl
       })
   
     
@@ -74,7 +75,8 @@ const updateMovie= asyncHandler(async (req, res) => {
     duration,
     synopsis,
     imageUrl,
-    videoUrl
+    videoUrl,
+    downloadUrl
   } = req.body
 
   const movie = await Movie.findById(req.params.id)
@@ -87,6 +89,7 @@ const updateMovie= asyncHandler(async (req, res) => {
     movie.synopsis = synopsis
     movie.imageUrl = imageUrl
     movie.videoUrl = videoUrl
+    movie.downloadUrl = downloadUrl
 
     const updatedMovie = await movie.save()
     res.json(updatedMovie)

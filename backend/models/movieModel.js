@@ -59,6 +59,9 @@ const movieSchema = mongoose.Schema(
       type: Number,
       required: true,
       default: 0
+    },
+    downloadUrl:{
+      type: String,
     }
     
    

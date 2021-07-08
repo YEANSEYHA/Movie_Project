@@ -5,17 +5,37 @@
                 <p><a style="text-decoration-line: underline"> <b>Noted: </b> </a> Just input what you want to change!</p>
                 
                 <br>
+                <label >Title</label><br>
                 <input type="text" placeholder="New Movietitle" name="title" v-model="title">
                 <br>
-                
+                <label >Genre</label><br>
                 <br>
                 <input type="text" placeholder="New genre" name="genre" v-model="genre">
                 <br>
-                
-                
+                <label >Release Year</label><br>
+                <input type="text" placeholder="New Release Date" name="year" v-model="year">
                 <br>
+                <label >Duration</label><br>
+                <input type="text" placeholder="Duration" name="duration" v-model="duration">
+                <br>
+                <label >Synopsis</label><br>
+                <input type="text" placeholder="Synopsis" name="synopsis" v-model="synopsis">
+                <br>
+
+                <br>
+                <label >Image URL</label><br>
                 <input type="text" placeholder="Update image url" name="imageUrl" v-model="imageUrl">
                 <br>
+
+                <label >Video URL</label><br>
+                <input type="text" placeholder="Update video url" name="videoUrl" v-model="videoUrl">
+                <br>
+
+                <label >Download Url</label><br>
+                <input type="text" placeholder="Download Url" name="downloadUrl" v-model="downloadUrl">
+                <br>
+
+
 
                 <br>
                 <button class="signupbtn">Update</button>
@@ -37,7 +57,12 @@ export default{
             id: '',
             title: '',
             genre: '',
+            year: '',
+            duration: '',
+            synopsis: '',
+            videoUrl: '',
             imageUrl: '',
+            downloadUrl:''
 
             }
     },
@@ -49,14 +74,19 @@ export default{
                    this.id = res.data._id
                    this.title= res.data.title
                    this.genre = res.data.genre
+                   this.year = res.data.year
+                   this.duration = res.data.duration
+                   this.videoUrl = res.data.videoUrl
                    this.imageUrl = res.data.imageUrl
                    this.isAdmin = res.data.isAdmin
+                   this.synopsis = res.data.synopsis
+                   this.downloadUrl = res.data.downloadUrl
                 
                })
         },
 
         async updateMovie(){
-            const postData ={title: this.title, genre:this.genre,isAdmin:this.isAdmin, imageUrl:this.imageUrl};
+            const postData ={title: this.title, genre:this.genre,isAdmin:this.isAdmin, imageUrl:this.imageUrl, year:this.year, duration:this.duration, videoUrl:this.videoUrl , synopsis:this.synopsis, downloadUrl: this.downloadUrl};
             const headers = { authorization: this.token }
             console.log(postData);
 
