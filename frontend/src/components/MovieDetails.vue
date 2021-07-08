@@ -32,7 +32,7 @@
                                 <p>{{synopsis}}</p>
                                 <div class="movie-details-prime">
                                     <ul>
-                                        <li class="share"><a href="#"><i class="fas fa-share-alt"></i> Share</a></li>
+                                        <li class="share"><a @click="clickLike(movie.id)" href="#"><i class="fas fa-thumbs-up"></i> 100</a></li>
                                         <li class="streaming">
                                             <h6>Prime Video</h6>
                                             <span>Streaming Channels</span>
@@ -206,6 +206,9 @@ export default {
                 alert("Report Successfully")
                 console.log(res.body)
             })
+        },
+        async clickLike(){
+            await axios.post('http://localhost:3000/api/movies')
         }
     },
        

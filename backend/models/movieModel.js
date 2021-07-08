@@ -49,6 +49,11 @@ const movieSchema = mongoose.Schema(
     videoUrl:{
       type: String,
       required: true
+    },
+    nbLike: {
+      type: Number,
+      required: true,
+      default : 0
     }
     
    

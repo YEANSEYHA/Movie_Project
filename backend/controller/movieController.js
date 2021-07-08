@@ -99,13 +99,10 @@ const updateMovie= asyncHandler(async (req, res) => {
 // @desc    Create new review
 // @route   POST /api/movies/:id/reviews
 const createMovieReview = asyncHandler(async (req, res) => {
-  const { comment } = req.body
+  const { comment  } = req.body
 
   const movie = await Movie.findById(req.params.id)
-
- 
-
-    const review = {
+   const review = {
       //name: req.user.name, //name: req.user.name, not working with whom post the report
       comment,
       //user: req.user._id, not working either
@@ -115,7 +112,17 @@ const createMovieReview = asyncHandler(async (req, res) => {
 
     await movie.save()
     res.status(201).json({ message: 'Review added' })
+})
 
+const likeMovie = asyncHandler(async (req, res)=>{
+    const { nbLike} = req.body
+
+    const movie = await Movie.findById(req.params.id)
+    
+      movie.nbLike=movie.nbLike+1
+
+    const likedMovie = await movie.save()
+    res.status(201).json(likedMovie)
 })
 
 
@@ -144,7 +151,8 @@ export {
     updateMovie,
     createMovieReview,
     createReport,
-    getReport
+    getReport,
+    likeMovie
 }
 
 
