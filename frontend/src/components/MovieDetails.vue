@@ -32,29 +32,31 @@
                                 <p>{{synopsis}}</p>
                                 <div class="movie-details-prime">
                                     <ul>
-                                        <li class="share"><a @click="clickLike()" href="#">{{nbLike}}<i class="fas fa-thumbs-up"></i></a></li>
+                                        <li  class="share"><a  href="#">{{nbLike}}<i @click="clickLike()" class="fas fa-thumbs-up"></i>Likes</a></li>
                                         <li class="streaming">
                                             <h6>Prime Video</h6>
                                             <span>Streaming Channels</span>
                                         </li>
-                                        <li class="watch"><a href="#" class="btn popup-video"><i class="fas fa-play"></i> Watch Now</a></li>
+                                        <li class="watch"><a @click="toggleVideo()" href="#" class="btn popup-video"><i  class="fas fa-play"></i> Watch Now</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <div class="movie-details-btn">
-                            <a href="img/poster/movie_details_img.jpg" class="download-btn" download="">Download <img src="fonts/download.svg" alt=""></a>
+                            <a href="#" class="download-btn" download="">Download <img src="fonts/download.svg" alt=""></a>
                         </div>
                     </div>
                 </div>
 
                 
     </div>
-    <center style="background:rgb(112, 104, 104)">
-        <div style="position:relative; overflow:hidden; padding-bottom:56.25%; padding-top:10px;  height: 720px "> 
-            <iframe v-bind:src="videoUrl" width="1080" height="720" frameborder="0" scrolling="auto" title="Real Madrid Vs Liverpool - 3 1. Match Highlights. Uefa Champions League Final 2018"  allowfullscreen></iframe>
-        </div>
-    </center>
+     <center v-show="showVideo" style="background:rgb(112, 104, 104)">
+        
+            <div style="position:relative; overflow:hidden; padding-bottom:56.25%; padding-top:10px;  height: 720px ; background:rgb(112, 104, 104)"> 
+                <iframe  v-bind:src="videoUrl" width="1080" height="720" frameborder="0" scrolling="auto" allowfullscreen style="background:rgb(112, 104, 104)"   ></iframe>
+            </div>
+        
+    </center> 
       <div class="container-fluid my-5">
 		<div class="row">
 			
@@ -174,7 +176,8 @@ export default {
             videoUrl:"",
             title:"",
             reviews:[],
-            nbLike:""
+            nbLike:"",
+            showVideo: false
         }
     },
     async mounted(){
@@ -215,6 +218,15 @@ export default {
                 alert("Liked Successfully")
                 console.log(res.body)
             })
+        },
+        
+        async toggleVideo(){
+            this.showVideo = !this.showVideo
+            await axios.post('http://localhost:3000/api/movies/'+this.id+'/count-view')
+            .then(res =>{
+                
+                console.log(res.body)
+            })
         }
     },
        
@@ -224,6 +236,8 @@ export default {
 <style scoped>
 @import "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css";
 @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css";
+
+
 
 /* comment area */
 

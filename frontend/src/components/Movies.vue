@@ -34,7 +34,7 @@
 											<li><span class="quality">hd</span></li>
 											<li>
 												<span class="duration"><i class="far fa-clock"></i>{{movie.duration}}</span>
-												<span class="rating"><i class="fas fa-thumbs-up"></i>{{movie.nbLike}}</span>
+												<span class="rating"><i class="fas fa-eye"></i>{{movie.nbView}}</span>
 											</li>
 										</ul>
 									</div>

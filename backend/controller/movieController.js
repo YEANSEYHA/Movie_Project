@@ -125,6 +125,17 @@ const likeMovie = asyncHandler(async (req, res)=>{
     res.status(201).json(likedMovie)
 })
 
+const countView = asyncHandler(async (req, res)=>{
+  const { nbView} = req.body
+
+  const movie = await Movie.findById(req.params.id)
+  
+    movie.nbView=movie.nbView+1
+
+  const countedView = await movie.save()
+  res.status(201).json(countedView)
+})
+
 
 
 // Report Technical problem
@@ -152,7 +163,8 @@ export {
     createMovieReview,
     createReport,
     getReport,
-    likeMovie
+    likeMovie,
+    countView
 }
 
 
