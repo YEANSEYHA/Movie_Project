@@ -3,22 +3,25 @@
         <div class="flexbox-item flexbox-item-2">
             <form class="container" @click.prevent="sendPost()">
                 
-                <input type="text" placeholder="Title" name="title" v-model="title">
+                <input type="text" placeholder="Title" name="title" id="title" v-model="title" required>
                
-                <input type="text" placeholder="Genre" name="genre" v-model="genre">
+                <input type="text" placeholder="Genre" name="genre" id="genre" v-model="genre" required>
                 
-                <input type="text" placeholder="Release Year" name="year" v-model="year">
+                <input type="text" placeholder="Release Year" name="year" id="year" v-model="year" required>
                
-                <input type="text" placeholder="Movie Duration" name="duration" v-model="duration">
+                <input type="text" placeholder="Movie Duration" name="duration" id="duration" v-model="duration" required>
                 
-                <input type="text" placeholder="Synopsis" name="synopsis" v-model="synopsis">
+                <input type="text" placeholder="Synopsis" name="synopsis" id="synopsis" v-model="synopsis" required>
                
-                <input type="text" placeholder="Image URL" name="imageUrl" v-model="imageUrl">
+                <input type="text" placeholder="Image URL" name="imageUrl" id="imageUrl" v-model="imageUrl" required>
                 
-                <input type="text" placeholder="Video URL" name="videoUrl" v-model="videoUrl">
+                <input type="text" placeholder="Video URL" name="videoUrl" id="videoUrl" v-model="videoUrl" required>
+
+                <input type="text" placeholder="Download URL" name="downloadUrl" id="downloadUrl" v-model="downloadUrl" required>
+                <br>
+                <br>
                 
                 <button type="submit" class="signupbtn">Upload Movie</button>
-
             </form>
 
         </div>
@@ -37,15 +40,24 @@ export default {
             synopsis: '',
             imageUrl: '',
             videoUrl: '',
+            downloadUrl: '',
         }
     },
 
     methods:{
       async sendPost(){
-        const postData ={title:this.title, genre:this.genre, year:this.year, duration:this.duration, synopsis:this.synopsis, imageUrl:this.imageUrl, videoUrl:this.videoUrl};
+        const postData ={ title:this.title,
+                          genre:this.genre,
+                          year:this.year,
+                          duration:this.duration,
+                          synopsis:this.synopsis,
+                          imageUrl:this.imageUrl, 
+                          videoUrl:this.videoUrl, 
+                          downloadUrl:this.downloadUrl};
         await axios
           .post("http://localhost:3000/api/movies", postData)
           .then(res =>{
+            alert("Upload Success")
             console.log(res.body);
           })
       }
