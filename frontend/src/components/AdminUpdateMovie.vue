@@ -9,7 +9,6 @@
                 <input type="text" placeholder="New Movietitle" name="title" v-model="title">
                 <br>
                 <label >Genre</label><br>
-                <br>
                 <input type="text" placeholder="New genre" name="genre" v-model="genre">
                 <br>
                 <label >Release Year</label><br>
@@ -20,7 +19,6 @@
                 <br>
                 <label >Synopsis</label><br>
                 <input type="text" placeholder="Synopsis" name="synopsis" v-model="synopsis">
-                <br>
 
                 <br>
                 <label >Image URL</label><br>
@@ -30,7 +28,7 @@
                 <label >Video URL</label><br>
                 <input type="text" placeholder="Update video url" name="videoUrl" v-model="videoUrl">
                 <br>
-
+                
                 <label >Download Url</label><br>
                 <input type="text" placeholder="Download Url" name="downloadUrl" v-model="downloadUrl">
                 <br>

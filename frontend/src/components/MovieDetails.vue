@@ -6,7 +6,7 @@
                         <div class="col-xl-3 col-lg-4">
                             <div class="movie-details-img">
                                 <img src="img/poster/movie_details_img.jpg" alt="">
-                                <img v-bind:src="imageUrl" alt="">
+                                <img v-bind:src="imageUrl" alt="Status 401: Image Not Found">
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-8">

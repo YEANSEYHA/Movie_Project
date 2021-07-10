@@ -16,7 +16,7 @@
 							<div class="movie-item mb-50" :movie="movie">
                             <router-link :to="{name: 'MovieDetails', params: { id: movie._id} }">
 								<div class="movie-poster">
-									<a href="#"><img v-bind:src="movie.imageUrl" alt=""></a>
+									<a href="#"><img v-bind:src="movie.imageUrl" alt="Status 404: Image not found"></a>
 									
 
 								</div>
