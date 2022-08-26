@@ -6,6 +6,7 @@ import userRoutes from "./routes/userRoutes.js";
 import auth from "./routes/authRoutes.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 /* import errorHandler from "./middleware/error.js"; */
 
 dotenv.config();
@@ -14,6 +15,9 @@ connectDB();
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+// Cookie parser
+app.use(cookieParser());
 
 app.get("/", (req, res) => {
   res.send("API is running");
@@ -27,7 +31,7 @@ app.use("/api/auth", auth);
 app.use(notFound);
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 app.listen(
   PORT,
   console.log(`Server Running in ${process.env.NODE_ENV} mode on port ${PORT} `)

@@ -16,8 +16,7 @@ const register = asyncHandler(async (req, res, next) => {
     password,
     isAdmin,
   });
-  // create token
-  const token = createdUser.getSignedJwtToken();
+  sendTokenResponse(user, 200, res);
   if (createdUser) {
     res.status(201).json({
       _id: createdUser._id,
@@ -55,8 +54,25 @@ const login = asyncHandler(async (req, res, next) => {
     return next(new ErrorResponse("Invalid credentials", 401));
   }
 
+  sendTokenResponse(user, 200, res);
+});
+
+// Get token from model, create cooking and send response
+const sendTokenResponse = (user, statusCode, res) => {
   // create token
   const token = user.getSignedJwtToken();
-  res.status(200).json({ success: true, token });
-});
+  const options = {
+    expires: new Date(
+      Date.now() + process.env.JWT_COOKIE_EXPIRE * 24 * 60 * 60 * 1000
+    ),
+    httpOnly: true,
+  };
+  if (process.env.NODE_ENV === "production") {
+    options.secure = true;
+  }
+  res.status(statusCode).cookie("token", token, options).json({
+    success: true,
+    token,
+  });
+};
 export { register, login };
